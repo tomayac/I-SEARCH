@@ -53,13 +53,35 @@
 
 \subsection{MMBag}
 
+\begin{itemize}
+\item A common pattern in search accross the whole web: a single input box (Yahoo, Bing, Google). Users are used to search with this pattern. More importantly, they \emph{expect} a search engine to use this pattern. I-SEARCH will be different from the search engine we've seen so far since it accepts a large number of types of input: audio, video, 3D objects, sketches, etc. How can we do this?
+ 
+\item Quick look at TinEye, MMRetrieval and Search-by-image (Google). There's obviously a big UX problem. Google seems to get it right since it keeps the text field paradigm, but I-SEARCH can't afford to put 7/8 different icons in a text box.
+\item 2 possible solutions to solve the problem: forget the text-box pattern, or adapt it. We chose to adapt it: a text-box, enriched with "tokenization" possibility and autocompletion. We decided to make a separated menu, while keeping the main text-field reactive to events.
+\end{itemize}
+
 \subsection{UIIFace}
 
 \subsection{CoFind}
 
 \section{Implementation and Results}
 (Jonas, Arnaud)
+Talking about the interface itself: 
+\begin{itemize}
+\item HTML5
+\item CSS3 media-queries
+\item Compatibility with older browsers
+\item Progressive enhancement principle
+\end{itemize}
 
+And about the interaction: 
+\begin{itemize}
+\item Device API
+\item audio, video, file API
+\item Geolocation and canvas
+\item Different sensors used
+\item Integration of sensors
+\end{itemize}
 \section{Evaluation}
 (Paul)
 Requirement: result criteria
