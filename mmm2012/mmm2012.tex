@@ -20,14 +20,14 @@
 \mainmatter  % start of an individual contribution
 
 % first the title is needed
-\title{Context-aware Querying for\\ Multi-modal Search Engines}
+\title{Context-aware Querying for\\ Multimodal Search Engines}
 
 % a short form should be given in case it is too long for the running head
-\titlerunning{Context-aware Querying for Multi-modal Search Engines}
+\titlerunning{Context-aware Querying for Multimodal Search Engines}
 
 \author{Jonas Etzold\inst{1} \and Arnaud Brousseau\inst{2} \and Paul Grimm\inst{1} \and Thomas Steiner\inst{2}}
 
-\authorrunning{Context-aware Querying for Multi-modal Search Engines}
+\authorrunning{Context-aware Querying for Multimodal Search Engines}
 % (feature abused for this document to repeat the title also on left hand pages)
 
 % the affiliations are given next; don't give your e-mail address
@@ -38,25 +38,28 @@
 \maketitle
 
 \begin{abstract}
-(Tom)
-\keywords{lorem, ipsum}
+Multimodal interaction provides the user with multiple modes of interacting with a system, such as gestures, speech, text, video, audio, etc. A multimodal system allows for several distinct means for input and output of data. In this paper, we present our work in the context of the I~SEARCH project, which aims at enabling context-aware querying of a multimodal search framework including real-world data such as user location or temperature. 
+
+\keywords{Multimodality, Context Awareness, User Interfaces}
 \end{abstract}
 
 \section{Introduction}
-(Tom) \cite{ijmis}
+The I-SEARCH project aims to provide a unified framework for multimodal content indexing, sharing, search and retrieval. This framework will be able to handle specific types of multimedia and multimodal content, namely text, 2D images, hand-drawn sketches, videos, 3D objects and audio files), but also real world information that can be used as part of queries. Query results can include any available relevant content of any of the aforementioned types. This is achieved through Rich Unified Content Annotation (RUCoD), a concept that we have introduced in~\cite{ijmis}. It becomes clear that a framework like I-SEARCH faces specific challenges user interface-wise. Not only does it have to allow for the combination of multimodal queries, but it has to do so on different devices, both desktop and mobile. This research being conducted in the context of a European research project, we have time constraints to take into account, hence, we can time-wise simply not afford to develop two UI stacks separately for desktop and mobile. We show how using newly added features in the markup language HTML  we can kill these two flies with one stone.
+
+The remainder of this paper is structured as follows: Section~2 presents related work, Section~3 introduces our chosen methodology, split up in three sub-tasks, Section~4 goes into implementation details and presents some preliminary results, Section~5 presents an Evaluation of a user study that we have conducted, Section~6 ends the paper with an outlook on future work and provides a conclusion.
 
 \section{Related Work}
 (Jonas) \cite{nigay}
 
 \section{Methodology}
-In this Section we present our methodology for context-aware querying for multi-modal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
+In this Section we present our methodology for context-aware querying for multimodal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
 
 \subsection{MMBag}
 MMBag stands for Multi-Media Bag and designates the I~SEARCH User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MMBag.
 
-Multi-modal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with I~SEARCH, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
+Multimodal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with I~SEARCH, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
 
-However, I~SEARCH can't directly benefit from this broadly accepted pattern, as a multi-modal search engine must accept a large number of types of input at the same time: audio, video, 3D objects, sketches, etc. How can this be achieved? Some search engines, even if they don't have the need for true multi-modal querying, do have the need to accept input which is not plain text.
+However, I~SEARCH can't directly benefit from this broadly accepted pattern, as a multimodal search engine must accept a large number of types of input at the same time: audio, video, 3D objects, sketches, etc. How can this be achieved? Some search engines, even if they don't have the need for true multimodal querying, do have the need to accept input which is not plain text.
 
 As a first example, we consider TinEye\footnote{\url{http://www.tineye.com/}}. TinEye is a Web-based search engine that allows for query by image content (QBIC) in order to retrieve similar or related images. The interface is split in two distinct parts: one part is a text box to provide a link to a Web-hosted image, while the second part allows for direct file upload (Figure~\ref{fig:tineye-ui}). This interface is a good solution for a search engine like TinEye (image input, image output) but I~SEARCH will need to come with more options than that.
 \begin{figure}[h!]
@@ -66,7 +69,7 @@ As a first example, we consider TinEye\footnote{\url{http://www.tineye.com/}}. T
   \label{fig:tineye-ui}
 \end{figure}
 
-As a second example, we examine MMRetrieval\footnote{\url{http://www.mmretrieval.net}}~\cite{mmretrieval}. It is an attempt at bringing together image and text search to compose a multi-modal query. MMRetrieval is a good showcase for the problem of designing a user interface (UI) with many user-tweakable options. For a user from outside the Information Retrieval field, the UI seems not necessarily clear in all detail, especially when specific terms such as \emph{Image ARF} are used (Figure~\ref{fig:mmretrieval-ui}).
+As a second example, we examine MMRetrieval\footnote{\url{http://www.mmretrieval.net}}~\cite{mmretrieval}. It is an attempt at bringing together image and text search to compose a multimodal query. MMRetrieval is a good showcase for the problem of designing a user interface (UI) with many user-tweakable options. For a user from outside the Information Retrieval field, the UI seems not necessarily clear in all detail, especially when specific terms such as \emph{Image ARF} are used (Figure~\ref{fig:mmretrieval-ui}).
 
 \begin{figure}[h!]
   \centering
@@ -145,7 +148,7 @@ Did you understand the interface
 Did you understand the process
 2 Use Cases: Rhythm clapping (UC1) and Games (UC7)?
 
-To validate our interface design on tasks of multi-modal search we conducted a user study. 
+To validate our interface design on tasks of multimodal search we conducted a user study. 
 We used a comparative study design to explore how the usage of different media types can 
 influence the success rate of search queries. 
 
@@ -159,7 +162,7 @@ result which satisfies her needs. We therefore set the following hypothesis:
   in faster search results compared to a single-media search
 \end{enumerate}
 
-For the user study we recruited N7N (FF,KK,TT,RR,2xGunar,Ohl) participants (NN male and NN female) aged between YYYY and YYYY. All participants were familiar with textual Web-based search. We asked all study participants to find NN different items (one audio file, one 3D model and one image, see Figure 1). All search queries are part of two uses cases which were described in section SSS. For explanation, what should be searched (and find), these items were shown in their original format to the study participants. To perform the search queries a mobile notebook with touch display was used. Consequently, for comparison with single-media search the study participants should find the same objects using common search single-media search engines. Our goal was to validate our interface design as well as to measure the impact of the possibility of multi-modal search. 
+For the user study we recruited N7N (FF,KK,TT,RR,2xGunar,Ohl) participants (NN male and NN female) aged between YYYY and YYYY. All participants were familiar with textual Web-based search. We asked all study participants to find NN different items (one audio file, one 3D model and one image, see Figure 1). All search queries are part of two uses cases which were described in section SSS. For explanation, what should be searched (and find), these items were shown in their original format to the study participants. To perform the search queries a mobile notebook with touch display was used. Consequently, for comparison with single-media search the study participants should find the same objects using common search single-media search engines. Our goal was to validate our interface design as well as to measure the impact of the possibility of multimodal search. 
 
 All users completed all tasks successfully. As a rough measure of task performance
 
