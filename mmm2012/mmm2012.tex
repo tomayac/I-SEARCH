@@ -49,19 +49,16 @@
 (Jonas) \cite{nigay}
 
 \section{Methodology}
-(Arnaud, Jonas)
+In this Section we present our methodology for context-aware querying for multi-modal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
 
 \subsection{MMBag}
+MMBag stands for Multi-Media Bag and designates the I~SEARCH User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MMBag.
 
-MMBag stands for Multi-Media Bag and designates the I-SEARCH User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper tries to show the approach chosen to create MMBag.
+Multi-modal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with I~SEARCH, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
 
-Multi-modal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with I-SEARCH, we needed a well-known interface paradigm. Accross the web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter his/her query, and trigger subsequent search actions. From big search corporations such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
+However, I~SEARCH can't directly benefit from this broadly accepted pattern, as a multi-modal search engine must accept a large number of types of input at the same time: audio, video, 3D objects, sketches, etc. How can this be achieved? Some search engines, even if they don't have the need for true multi-modal querying, do have the need to accept input which is not plain text.
 
-However, I-SEARCH can't directly benefit from this broadly accepted pattern. Indeed, a multi-modal search engine must accept a large number of types of input at the same time: audio, video, 3D objects, sketches, etc. How can this be achieved?
- 
-Some search engines, even if they don't have the need for true multi-modal querying, do have the need to accept input which is not plain text.
-
-A first example of that is TinEye\footnote{\url{http://www.tineye.com/}}. TinEye is a web-based search engine which enables queries by picture, in order to retrieve similar or related images. 
+As a first example, we consider TinEye\footnote{\url{http://www.tineye.com/}}. TinEye is a Web-based search engine that allows for query by image content (QBIC) in order to retrieve similar or related images. The interface is split in two distinct parts: one part is a text box to provide a link to a Web-hosted image, while the second part allows for direct file upload (Figure~\ref{fig:tineye-ui}). This interface is a good solution for a search engine like TinEye (image input, image output) but I~SEARCH will need to come with more options than that.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.8\linewidth]{resources/tineye-UI.png}
@@ -69,9 +66,7 @@ A first example of that is TinEye\footnote{\url{http://www.tineye.com/}}. TinEye
   \label{fig:tineye-ui}
 \end{figure}
 
-The interface is split in two distincts parts: one part is a text box to provide a link of a web hosted picture while the second part allows for direct file upload. This interface is a good solution for a search engine like TinEye (image input, image output) but I-SEARCH will need to come with more options than that.
-
- For example, let's have a look at MMRetrieval ~\cite{mmretrieval}. It is an attempt at bringing together image and text search, i.e., combining pictures and plain text to compose a multi-modal query. MMRetrieval\footnote{\url{http://www.mmretrieval.net}} shows how cluttered an interface can become as more options are given to the user. To many, unclear  options are featured on the interface, making the process of query formulation long and difficult.
+As a second example, we examine MMRetrieval\footnote{\url{http://www.mmretrieval.net}}~\cite{mmretrieval}. It is an attempt at bringing together image and text search to compose a multi-modal query. MMRetrieval is a good showcase for the problem of designing a user interface (UI) with many user-tweakable options. For a user from outside the Information Retrieval field, the UI seems not necessarily clear in all detail, especially when specific terms such as \emph{Image ARF} are used (Figure~\ref{fig:mmretrieval-ui}).
 
 \begin{figure}[h!]
   \centering
@@ -80,7 +75,7 @@ The interface is split in two distincts parts: one part is a text box to provide
   \label{fig:mmretrieval-ui}
 \end{figure}
 
-Finally, we can have a look at Google Search-by-image. This functionnality was lauched on June, 14th 2011\footnote{\url{http://googleblog.blogspot.com/2011/06/knocking-down-barriers-to-knowledge.html}} and has the same requirements as MMRetrieval in terms of user interface, i.e., combining text and image input. 
+Finally, we have a look at Google Search-by-image, a functionality launched on June, 14, 2011\footnote{\url{http://googleblog.blogspot.com/2011/06/knocking-down-barriers-to-knowledge.html}} and has the same requirements as MMRetrieval in terms of user interface, i.e., combining text and image input. With the Search-by-image interface, Google has succeeded in keeping the text box pattern (Figure~\ref{fig:search-by-image-box}), while preventing any extra visual noise. The interface is \emph{progressively disclosed} to users via a contextual menu when the camera icon is clicked (Figure~\ref{fig:search-by-image-popup}).
 
 \begin{figure}[h!]
   \centering
@@ -96,18 +91,14 @@ Finally, we can have a look at Google Search-by-image. This functionnality was l
   \label{fig:search-by-image-popup}
 \end{figure}
 
-With the Search-by-image interface, Google has succeeded in keeping the text box pattern, while preventing any extra visual noise. The interface is \emph{progressively disclosed} to users via a contextual menu when the camera icon is clicked.
-
-Even if the Search-by-image solution seems very elegant, this is still not suitable for I-SEARCH since the interface would require a high number of small icons: camera, 3d, geolocation, audio, video, etc.  As a result, we decided to adapt this solution. 
+Even if the Search-by-image solution seems very elegant, this is still not suitable for I~SEARCH since the interface would require a high number of small icons: camera, 3D, geolocation, audio, video, etc.  As a result, we decided to adapt a solution that can be seen in Figure~\ref{fig:isearch-ui}. This interface keeps the idea of a single text box. It is enriched by auto-completion as well as ``tokenization". The term ``tokenization" refers to the process of representing an item (picture, sound, etc.) with a small token in the text field, as if it was part of the text query. We also kept the idea of progressive disclosure for the different actions required by the various modes, e.g., uploading a picture or sketching something. The different icons are grouped together in a separated menu, close to the main search field.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.8\linewidth]{resources/isearch-UI.png}
-  \caption{First version of I-SEARCH interface}
+  \caption{First version of I~SEARCH interface}
   \label{fig:isearch-ui}
 \end{figure}
-
-This interface keeps the idea of a single text box. It is enriched by autocompletion as well as ``tokenization". The term ``Tokenization" refers to the process of representing an item (picture, sound, etc) with a small token in the text field, as if it was part of the text query. We also kept the idea of progressive disclosure for the different actions required by the modes, e.g, upload a picture or sketch something. The different icons are grouped together in a separated menu, close to the main search field.
 
 \subsection{UIIFace}
 
@@ -120,9 +111,9 @@ This interface keeps the idea of a single text box. It is enriched by autocomple
 \section{Implementation and Results}
 (Jonas, Arnaud)
 
-The I-SEARCH GUI is built using the web platform. HTML, CSS and Javascript are the 3 main building blocks of the interface. The rationale behind that choice is the following: I-SEARCH needs to be cross-browser and cross-devices compatible as widely as possible. The latest specifications of those technologies enable us to do just that. Indeed, HTML5, CSS3 and the new Javascript APIs empower the browser in truly novel ways.
+The I~SEARCH GUI is built using the Web platform. HTML, CSS and JavaScript are the three main building blocks for the interface. The rationale behind that choice is the following: I~SEARCH needs to be cross-browser and cross-device compatible. The latest specifications of those technologies enable us to do just that. Indeed, CSS3~\cite{css3}, HTML5~\cite{html5} and the therein defined new JavaScript APIs empower the browser in truly novel ways.
 
-Our strategy also include support for older browser. Users sometimes don't have access to a cutting-edge browser  . When a feature we use is not available for a certain browser, 2 choices are available: either drop support for that feature if it is not important (e.g., drop shadows or border-radius) or provide alternate solution to mimic the experience.
+Our strategy also includes support for older browsers. Users sometimes don't have access to a cutting-edge browser. When a feature we use is not available for a certain browser, two choices are available: either drop support for that feature if it is not important (e.g., drop visual shims like CSS shadows or border-radius), or provide alternate solution to mimic the experience.
 
 \emph{Side note: the plan is to go through each feature we are going to use to show that...maybe with code samples?}
 
@@ -154,12 +145,12 @@ Did you understand the interface
 Did you understand the process
 2 Use Cases: Rhythm clapping (UC1) and Games (UC7)?
 
-To validate our interface design on tasks of multimodal search we conducted a user study. 
+To validate our interface design on tasks of multi-modal search we conducted a user study. 
 We used a comparative study design to explore how the usage of different media types can 
 influence the success rate of search queries. 
 
-Overall, we expected that the user can handle the user interface very easily and he gets a 
-result which satisfies his needs. We therefore set the following hypothesis: 
+Overall, we expected that the user can handle the user interface very easily and gets a 
+result which satisfies her needs. We therefore set the following hypothesis: 
 \begin{enumerate}
   \item (H1) a search query will mostly contain just one modality
   \item (H2) a search refinement will be done by adding other media types
@@ -168,16 +159,7 @@ result which satisfies his needs. We therefore set the following hypothesis:
   in faster search results compared to a single-media search
 \end{enumerate}
 
-For the user study we recruited N7N (FF,KK,TT,RR,2xGunar,Ohl) participants (NN male and NN female) 
-aged between YYYY and YYYY. All participants were familiar with textual web-based search. 
-We asked all study participants to find NN different items (one audio file, one 3D model and 
-one image, see Figure 1). All search queries are part of two uses cases which were described in 
-section SSS. For explanation, what should be searched (and find), these items were shown in their 
-original format to the study participants. To perform the search queries a mobile notebook with 
-touch display was used. Consequently, for comparison with single-media search the study participants 
-should find the same objects using common search single-media search engines.
-Our goal was to validate our interface design as well as to measure the impact of the possibility of 
-multimodal search. 
+For the user study we recruited N7N (FF,KK,TT,RR,2xGunar,Ohl) participants (NN male and NN female) aged between YYYY and YYYY. All participants were familiar with textual Web-based search. We asked all study participants to find NN different items (one audio file, one 3D model and one image, see Figure 1). All search queries are part of two uses cases which were described in section SSS. For explanation, what should be searched (and find), these items were shown in their original format to the study participants. To perform the search queries a mobile notebook with touch display was used. Consequently, for comparison with single-media search the study participants should find the same objects using common search single-media search engines. Our goal was to validate our interface design as well as to measure the impact of the possibility of multi-modal search. 
 
 All users completed all tasks successfully. As a rough measure of task performance
 
@@ -185,7 +167,7 @@ All users completed all tasks successfully. As a rough measure of task performan
 (Tom)
 
 \section{Acknowledgments}
-This work is partly funded by the EU FP7 I-SEARCH project under project reference 248296.
+This work is partly funded by the EU FP7 I~SEARCH project under project reference 248296.
 
 \bibliographystyle{plain}
 \bibliography{mmm2012}
