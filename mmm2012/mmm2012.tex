@@ -1,5 +1,4 @@
-\documentclass[runningheads,a4paper]{llncs}
-\usepackage[utf8]{inputenc}
+\documentclass[runningheads,a4paper]{llncs} \usepackage[utf8]{inputenc}
 \usepackage[hyphens]{url}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -31,10 +30,11 @@
 \authorrunning{Context-aware Querying for Multimodal Search Engines}
 % (feature abused for this document to repeat the title also on left hand pages)
 
-% the affiliations are given next; don't give your e-mail address
-% unless you accept that it will be published
+% the affiliations are given next; don't give your e-mail address unless you
+% accept that it will be published
 \institute{Erfurt University of Applied Sciences, Germany, \email{\{jonas.etzold|grimm\}@fh-erfurt.de}
-\and Google Germany GmbH, ABC-Str. 19, 20354 Hamburg, Germany, \email{\{arnaudb|tomac\}@google.com}}
+\and Google Germany GmbH, ABC-Str. 19, 20354 Hamburg, Germany,
+\email{\{arnaudb|tomac\}@google.com}}
 
 \maketitle
 
@@ -52,11 +52,48 @@ The remainder of this paper is structured as follows: Section~2 presents related
 \section{Related Work}
 (Jonas) \cite{nigay}
 
+(for multimodal search interfaces)
+
+(for multimodal interaction)
+Further approaches of frameworks for multimodal interaction are described by the W3C 
+Multimodal Interaction Working Group with its work-in-progress specification of the 
+``Multimodal Architecture and Interfaces'' \cite{w3cMMI} which is used to define the
+internal structure of this component. Nevertheless UIIFace does not rely on XML
+for propagating interaction commands to interface components since JavaScript
+events can be more directly used in a client-based JavaScript library for this
+purpose.
+
+Other approaches to define multimodal interaction interfaces are described by
+Sreekanth \cite{sreekanth}, who uses a Monitor Agent to collect events from
+different modalities and Roscher \cite{roscher}, who uses the Multi-Access
+Service Platform (MASP) which implements different user interface models for
+each input modality and is able to combine them to more complex multimodal user
+interfaces including the synchronization of all inputs along the user interface
+models. In contrast to these approaches UIIFace does not deliver any UI
+components and will remove the need for an interface developer to take care of
+the input modality through the unified command layer which provides practically
+modality-independent interaction commands.
+
+(for collaborational search)
+In order to create an appropriate concept for collaborative search several
+approaches were taken into account. Mainly the work of Morris 30 and Pickens
+31 described interesting ways of collaborative search approaches.  They make
+use of a search session and state variables in user profiles to transfers
+changes made in the interface of one user to all other collaborating users and
+vice versa. Further the survey about collaborative web search practices done by
+Morris 32 as well as the status quo practices presented by Amershi 15 have
+influenced the decisions made during the design process of this concept. Other
+approaches which mainly focus on local collaboration are described in 33 34
+35. Since they mainly focus on table top interfaces and are not usable across
+more than one device, those approaches were found to be not relevant to create
+the Collaborative Search concept.
+
 \section{Methodology}
 In this Section we present our methodology for context-aware querying for multimodal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
 
 \subsection{MMBag}
-MMBag stands for Multi-Media Bag and designates the \mbox{I-SEARCH} User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MMBag.
+MMBag stands for Multi-Modal Bag and designates the \mbox{I-SEARCH} User
+Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MMBag.
 
 Multimodal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with \mbox{I-SEARCH}, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
 
@@ -106,11 +143,124 @@ Even if the Search-by-image solution seems very elegant, this is still not suita
 
 \subsection{UIIFace}
 
-(no matter what input device is used > one interface / one event for any device) 
+Interaction is an important factor when it comes to context-awareness and
+multimodality. In order to deliver a Graphical User Interface (GUI) which is
+able to facilitate all the possibilities of an multimodal search engine, an
+very flexible approach with a rich interaction methodology is needed. 
+Further multimodal quering could also involve the way a user interacts with the
+system as part of the query. 
+
+To target all those needs the concept of UIIFace (Unified Interaction Interface)
+is introduced as general interaction layer for context-arwe multimodal quering.
+
+UIIFace describes a common interface between these interaction modalities and the 
+graphical user interface (GUI) of I-SEARCH by providing a general set of interaction 
+commands for the interface. Each input modality provides the implementation 
+for parts of the commands or all commands defined by UIIFace. 
+
+The idea of UIIFace is based on the OpenInterface Framework \cite{openinterface}
+which describes a framework for the development of multimodal input interface
+prototypes. It uses components which can represent different input modalities as
+well as user interfaces and other required software pieces in order to create
+and control a certain application. In contrast to this approach UIIFace is a web
+implemented approach based on modern HTML5 APIs. Furthermore it provides a
+command interface to web based GUIs instead of being able to create a
+stand-alone application outside the browser window.
+
+For creating the set of uni- and multimodal commands which can be used for
+I-SEARCH interfaces, the results of Chang \cite{chang} as well as the needs
+derived from the creation of multimodal search queries are used.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\linewidth]{resources/uiiface-structure.png}
+  \caption{Schematic view on the internal structure of UIIFace}
+  \label{fig:uiiface}
+\end{figure}
+
+Figure \ref{fig:uiiface} depicts the internal structure of UIIFace and shows the
+flow of events. Events are raised from the users raw input. Gesture Interpreter
+determines defined gestures (e.g. zoom, rotate) found in the raw input. If no
+gestures were found, the Basic Interpreter routes Touch and Kinect events to
+basic cursor and keyboard events. Gestures, speech commands and basic mouse,
+keyboard events are then synchronized in the Interaction Manager and forwarded
+as Combined Events to the Command Mapper which maps the incoming events to the
+defined list of interaction commands which can be registered by any web-based
+GUI. The Command Customizer can be used to rewrite the trigger event for
+commands to user specific gestures or other input sequences (e.g. Keyboard
+shortcuts). This is an additional feature which is not crucial to the
+functionality of UIIFace but can be implemented at a later stage in order to add
+more explicit personalisation features.
 
 \subsection{CoFind}
 
-(enabling real-time collaborative search query creation on a pure html website)
+Another part of our methodology targets the increased complexity of search
+tasks and the necessity to collaborate on those tasks in order to formulate
+adequat search queries which lead faster to appropriate result. The increased
+complexity is primarly caused through the vast amount of unstructured data 
+within the Internet and secondly through situations where the expected results
+are very fuzzy or hard to describe in textual terms. 
+
+Therefore the CoFind (Collaborative Finding) approach is introduced as an
+collaborative search system which enables real-time collaborative search query
+creation on a pure html website.
+
+Likewise the collaborative approach of Google Tables and Documents -ref- the
+system enables people and expert users from different domains to work together.
+The main difference here is that CoFind enhances the idea of collaborative document
+creation to search queries. This extension becomes even more important if
+search engines allow the usage of multimodal search queries which
+involve multimedia, real-world and user data in a query. 
+
+The CoFind concept is based upon a search session concept in which HTML content
+of the participants local clients is transmitted within this session.
+In order to realise collaborative querying the concept provides functions for
+activating collaborative search sessions, joining other online users by their
+Email address and managing messaging between participants of the search session.
+
+In general the concept consists of three main parts:
+\begin{enumerate}
+  \item Session Manager - controls establishment and closing of collaborative
+  search sessions
+  \item Content Manager - transmission of changes in user interfaces to all
+  participants
+  \item Messaging Manager - transmission of status and user messages to all
+  participants
+\end{enumerate}
+
+Figure \ref{fig:cofind} shows how the parts of the Collaborative Search concept
+interact during the search process in order to create a collaborative search session.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\linewidth]{resources/cofind-workflow.png}
+  \caption{Schematic diagram of interaction between parts of CoFind}
+  \label{fig:cofind}
+\end{figure}
+ 
+The main flow of a collaborative search session can be described as follows:
+\begin{enumerate}
+  \item To create or join a collaborative search session a user must supply the
+  email address of the other user
+  \item If other user is online and logged-in he receives an on-screen message
+  and needs to accept the joining of other user
+  \item after confirmation a new session entry is created which stores all
+  participants
+  \item every time a change on the query input field or result set is performed,
+  the changed content is transferred to all participants (via WebSockets)
+  \item each participant is able to navigate through the result set independent
+  from others, but selections made by one user are highlighted in the result set of all other users
+  \item after a user downloaded his result items or after he left the page, he
+  can close the search session
+\end{enumerate}
+
+The advantages of the described concept are:
+\begin{enumerate}
+  \item allows collaboration on query compilation across multiple devices and
+  users
+  \item no interface overhead, easy to create collaborative sessions
+  \item allows more precise query formulation for difficult search tasks
+\end{enumerate}
 
 \section{Implementation and Results}
 (Jonas, Arnaud)
