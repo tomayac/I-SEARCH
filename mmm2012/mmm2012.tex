@@ -9,6 +9,7 @@
 \usepackage{alltt}
 \usepackage{subfig}
 \usepackage{amssymb}
+\usepackage{listings}
 \setcounter{tocdepth}{3}
 
 \usepackage{url}
@@ -122,13 +123,23 @@ We would like to highlight that CSS and HTML are 2 standards that natively enabl
 
 Of course, progressive enhancement isn't always a good solution, particularly when you want to ensure that all users can access a particular feature. In this case, we will use the \emph{graceful degradation} principle, i.e, we will use fallback solutions when the technology stack is not there to support our needs in a certain browser. 
 
+The next parts of this paper discuss, in the case of I-SEARCH, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, geolocation API, sensors integration, and device API.
+
 \subsection{HTML5 Semantic Markup} 
 
-HTML5 semantic markup, with no fallback for older browsers (older browsers won't understand the extra meaning, and that's totally fine)
+HTML5 comes with extra elements to add meaning to Web pages, such as {\tt <header>}, {\tt <footer>}, {\tt <nav>} or {\tt <time>}, to name a few. It makes sense in the case of I-SEARCH to use more semantic markup: it will greatly improve usability and interoperability\cite{}.
+The lack of support in older browsers in not a problem here: extra semantic simply won't be provided.
 
 \subsection{CSS3 Media Queries} 
 
-CSS3 media-queries, with Javascript fallback for older browsers
+The I-SEARCH project needs to be compatible with a large range of devices: desktop browsers, phones and tablets. Rather than building several versions of I-SEARCH, we will use CSS3 Media-queries\footnote{\url{http://www.w3.org/TR/css3-mediaqueries/}} to adapt the layout to those devices. Media-queries are not supported in old browsers such as Internet Explorer (version < 8) or Mozilla Firefox (version < 3.5), but that is not an issue since tablets and phones have browsers that support this feature.
+
+To show our exact strategy, here is how and where different devices are supported by the combination of normal CSS selectors and CSS Media-Queries: 
+\begin{itemize}
+\item Begin the styling with a global CSS reset, so that styles are consistent across browsers. It gives a common basis.
+\item Then come the global styles, suitable for old and modern browsers.
+\item CSS3 enhancements, including Media-Queries. This will be ignored by old browsers, but as pointed earlier, it is not an issue.
+\end{itemize}
 
 \subsection{New Javascript APIs}
 
@@ -137,6 +148,9 @@ CSS3 media-queries, with Javascript fallback for older browsers
 \subsection{Canvas}
 
 \subsection{Geolocation}
+\begin{lstlisting}
+navigator.geolocation.getCurrentPosition()
+\end{lstlisting}
 
 \subsection{Sensors}
 
