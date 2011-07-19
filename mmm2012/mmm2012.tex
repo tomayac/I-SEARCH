@@ -269,43 +269,78 @@ The \mbox{I-SEARCH} GUI is built using the Web platform. HTML, CSS and JavaScrip
 
 Our strategy also includes support for older browsers. When browsing the Web, a significant part of users don't have access to a cutting-edge Web browser. If a feature we use is not available for a certain browser version, two choices are available: either drop support for that feature if it is not important (e.g., drop visual shims like CSS shadows or border-radius), or provide alternate solution to mimic the experience. 
 
-We would like to highlight that CSS and HTML are 2 standards that natively enable progressive enhancement thanks to a simple rule: when a Web browser doesn't understand an HTML attribute, a CSS value or selector, it simply \emph{ignores it}. This rule is the guarantee that we can build future-proof pages using CSS and HTML. Web browsers will render the page according to their capabilities: old browsers will render basic markup and styles, while modern browsers will be able to render stunning CSS3 effect.
+We would like to highlight that CSS and HTML are 2 standards that natively enable progressive enhancement thanks to a simple rule: when a Web browser doesn't understand an HTML attribute, a CSS value or selector, it simply \emph{ignores it}. This rule is the guarantee that we can build future-proof pages using CSS and HTML. Web browsers will render the page according to their capabilities: old browsers will render basic markup and styles, while modern browsers will be able to render stunning CSS3 effects.
 
 Of course, progressive enhancement isn't always a good solution, particularly when you want to ensure that all users can access a particular feature. In this case, we will use the \emph{graceful degradation} principle, i.e, we will use fallback solutions when the technology stack is not there to support our needs in a certain browser. 
 
-The next parts of this paper discuss, in the case of I-SEARCH, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, geolocation API, sensors integration, and device API.
+The next parts of this paper discuss, in the case of I-SEARCH, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, audio and video, geolocation, sensors integration, and device API.
 
 \subsection{HTML5 Semantic Markup} 
 
-HTML5 comes with extra elements to add meaning to Web pages, such as {\tt <header>}, {\tt <footer>}, {\tt <nav>} or {\tt <time>}, to name a few. It makes sense in the case of I-SEARCH to use more semantic markup: it will greatly improve usability and interoperability\cite{}.
+HTML5 comes with extra elements to add meaning to Web pages, such as {\tt <header>}, {\tt <footer>}, {\tt <nav>} or {\tt <time>}, to name a few\footnote{The complete set of elements introduced in HTML5 can be found at \url{http://dev.w3.org/html5/spec/Overview.html\#semantics}}. It makes sense in the case of I-SEARCH to use more semantic markup: it will greatly improve usability and interoperability\cite{}.
 The lack of support in older browsers in not a problem here: extra semantic simply won't be provided.
 
 \subsection{CSS3 Media Queries} 
 
-The I-SEARCH project needs to be compatible with a large range of devices: desktop browsers, phones and tablets. Rather than building several versions of I-SEARCH, we will use CSS3 Media-queries\footnote{\url{http://www.w3.org/TR/css3-mediaqueries/}} to adapt the layout to those devices. Media-queries are not supported in old browsers such as Internet Explorer (version < 8) or Mozilla Firefox (version < 3.5), but that is not an issue since tablets and phones have browsers that support this feature.
+The I-SEARCH project needs to be compatible with a large range of devices: desktop browsers, phones and tablets. Rather than building several versions of I-SEARCH, we will use CSS3 Media-queries\footnote{\url{http://www.w3.org/TR/css3-mediaqueries/}} to adapt the layout to those devices. Media-queries are not supported in old browsers such as Internet Explorer (version prior to 8) or Mozilla Firefox (version prior to 3.5), but that is not an issue since tablets and phones have browsers that support this feature.
 
 To show our exact strategy, here is how and where different devices are supported by the combination of normal CSS selectors and CSS Media-Queries: 
 \begin{itemize}
 \item Begin the styling with a global CSS reset, so that styles are consistent across browsers. It gives a common basis.
 \item Then come the global styles, suitable for old and modern browsers.
-\item CSS3 enhancements, including Media-Queries. This will be ignored by old browsers, but as pointed earlier, it is not an issue.
+\item Finally, we can add CSS3 enhancements, including Media-Queries. This will be ignored by old browsers, but as pointed earlier, it is not an issue.
 \end{itemize}
-
-\subsection{New Javascript APIs}
-
- Audio, Video and File APIs, with Flash fallback
 
 \subsection{Canvas}
 
+Canvas in HTML5 refers to the introduction of a new element: {\tt <canvas>}\footnote{\url{http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html}}. This element enable cheap and scriptable rendering of graphics. For instance, since the introduction of {\tt <canvas>} in modern browsers, many HTML5 games have been written because {\tt <canvas>} offers a convenient and fast way to deal with user input and graphic rendering in real-time through its Javascript API. 
+
+In the case of I-SEARCH, our plan is to use {\tt <canvas>} for user input when the query requires a user sketch, and also to display results in novel ways. Indeed, {\tt <canvas>} enables virtually any kind of result visualization, including visualization of audio and video.
+
+{\tt <canvas>} will be a core element of I-SEARCH. Thus, it is crucial to offer a fallback option for older browsers. We plan to do so by using FlashCanvas\footnote{\url{http://flashcanvas.net/}}.
+
+
+\subsection{HTML5 Audio and video}
+HTML5 comes with 2 new elements, {\tt <audio>} and {\tt <video>}, to deal with multimedia elements. The key difference is that video and audio items are now fully rendered in the browser. It means that audio and video are now fully scriptable: rotation, scale, controls, CSS Styles, and so forth. 
+
+In the case of I-SEARCH, this flexibility brought by HTML5 {\tt <audio>} and {\tt <video>} is a huge opportunity to create interesting and interactive visualisations of search results.
+If  {\tt <audio>} and {\tt <video>} are not available in a certain browser, we will use Adobe Flash\footnote{\url{http://www.adobe.com/products/flashplayer/}} to display media items to users.
+
+\subsection{File API}
+
+The file API is a Javascript API, part of the HTML5 Specification. It ``provides an API for representing file objects in web applications, as well as programmatically selecting them and accessing their data."\footnote{\url{http://www.w3.org/TR/FileAPI/}}. 
+
+This is particularly interesting in the case of I-SEARCH, since users are very likely to compose their query with local files (piece of music, pictures from their local library, etc). The File API allows new paradigm to deal with files, such as native support for drag'n'dropping elements from the desktop to the I-SEARCH interface.
+
+This feature is not crucial for user interaction, so we won't provide fallback for older browsers. Indeed, a simple form with the possibility to upload a file will be provided, as shown in figure \ref{fig:input-picture}.
+ 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\linewidth]{resources/input-picture.png}
+  \caption{Picture panel of the I-SEARCH interface}
+  \label{fig:input-picture}
+\end{figure}
+
 \subsection{Geolocation}
+Context-aware search is one of the features of the I-SEARCH framework. This is particularly useful in the case of a user searching on a mobile device. Indeed, he/she is more likely to need information relative to his/her location.
+
+HTML5 comes with a Javascript API that does just that: the geolocation API. Instead of checking the IP address and/or calling the GPS of a device through proprietary API, the geolocation API enables Web pages to retrieve a user's location with only one line of Javascript: 
 \begin{lstlisting}
 navigator.geolocation.getCurrentPosition()
 \end{lstlisting}
+In the background, the browser calls the device GPS or compute an approximate location thanks to IP address information. Furthermore, the retrieval of a user's location is much more transparent since browsers supporting the geolocation API prompt users for their permission before doing anything. See figure \ref{fig:geolocation-prompt}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\linewidth]{resources/geolocation-prompt.png}
+  \caption{Firefox 5, asking permission to share user location}
+  \label{fig:geolocation-prompt}
+\end{figure}
+
 
 \subsection{Sensors}
 
 \subsection{Device API}
-
 
 \section{Evaluation}
 (Paul)
