@@ -45,7 +45,7 @@ Multimodal interaction provides the user with multiple modes of interacting with
 \end{abstract}
 
 \section{Introduction}
-The I-SEARCH project aims to provide a unified framework for multimodal content indexing, sharing, search and retrieval. This framework will be able to handle specific types of multimedia and multimodal content, namely text, 2D images, hand-drawn sketches, videos, 3D objects and audio files), but also real world information that can be used as part of queries. Query results can include any available relevant content of any of the aforementioned types. This is achieved through Rich Unified Content Annotation (RUCoD), a concept that we have introduced in~\cite{ijmis}. It becomes clear that a framework like I-SEARCH faces specific challenges user interface-wise. Not only does it have to allow for the combination of multimodal queries, but it has to do so on different devices, both desktop and mobile. This research being conducted in the context of a European research project, we have time constraints to take into account, hence, we can time-wise simply not afford to develop two UI stacks separately for desktop and mobile. We show how using newly added features in the markup language HTML  we can kill these two flies with one stone.
+The \mbox{I-SEARCH} project aims to provide a unified framework for multimodal content indexing, sharing, search and retrieval. This framework will be able to handle specific types of multimedia and multimodal content, namely text, 2D images, hand-drawn sketches, videos, 3D objects and audio files), but also real world information that can be used as part of queries. Query results can include any available relevant content of any of the aforementioned types. This is achieved through Rich Unified Content Annotation (RUCoD), a concept that we have introduced in~\cite{ijmis}. It becomes clear that a framework like \mbox{I-SEARCH} faces specific challenges user interface-wise. Not only does it have to allow for the combination of multimodal queries, but it has to do so on different devices, both desktop and mobile. This research being conducted in the context of a European research project, we have time constraints to take into account, hence, we can time-wise simply not afford to develop two UI stacks separately for desktop and mobile. We show how using newly added features in the markup language HTML  we can kill these two flies with one stone.
 
 The remainder of this paper is structured as follows: Section~2 presents related work, Section~3 introduces our chosen methodology, split up in three sub-tasks, Section~4 goes into implementation details and presents some preliminary results, Section~5 presents an Evaluation of a user study that we have conducted, Section~6 ends the paper with an outlook on future work and provides a conclusion.
 
@@ -154,7 +154,7 @@ To target all those needs the concept of UIIFace (Unified Interaction Interface)
 is introduced as general interaction layer for context-arwe multimodal quering.
 
 UIIFace describes a common interface between these interaction modalities and the 
-graphical user interface (GUI) of I-SEARCH by providing a general set of interaction 
+graphical user interface (GUI) of \mbox{I-SEARCH} by providing a general set of interaction 
 commands for the interface. Each input modality provides the implementation 
 for parts of the commands or all commands defined by UIIFace. 
 
@@ -168,7 +168,7 @@ command interface to web based GUIs instead of being able to create a
 stand-alone application outside the browser window.
 
 For creating the set of uni- and multimodal commands which can be used for
-I-SEARCH interfaces, the results of Chang \cite{chang} as well as the needs
+\mbox{I-SEARCH} interfaces, the results of Chang \cite{chang} as well as the needs
 derived from the creation of multimodal search queries are used.
 
 \begin{figure}[h!]
@@ -273,16 +273,16 @@ We would like to highlight that CSS and HTML are 2 standards that natively enabl
 
 Of course, progressive enhancement isn't always a good solution, particularly when you want to ensure that all users can access a particular feature. In this case, we will use the \emph{graceful degradation} principle, i.e, we will use fallback solutions when the technology stack is not there to support our needs in a certain browser. 
 
-The next parts of this paper discuss, in the case of I-SEARCH, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, audio and video, geolocation, sensors integration, and device API.
+The next parts of this paper discuss, in the case of \mbox{I-SEARCH}, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, audio and video, geolocation, sensors integration, and device API.
 
 \subsection{HTML5 Semantic Markup} 
 
-HTML5 comes with extra elements to add meaning to Web pages, such as {\tt <header>}, {\tt <footer>}, {\tt <nav>} or {\tt <time>}, to name a few\footnote{The complete set of elements introduced in HTML5 can be found at \url{http://dev.w3.org/html5/spec/Overview.html\#semantics}}. It makes sense in the case of I-SEARCH to use more semantic markup: it will greatly improve usability and interoperability\cite{}.
+HTML5 comes with extra elements to add meaning to Web pages, such as {\tt <header>}, {\tt <footer>}, {\tt <nav>} or {\tt <time>}, to name a few\footnote{The complete set of elements introduced in HTML5 can be found at \url{http://dev.w3.org/html5/spec/Overview.html\#semantics}}. It makes sense in the case of \mbox{I-SEARCH} to use more semantic markup: it will greatly improve usability and interoperability\cite{}.
 The lack of support in older browsers in not a problem here: extra semantic simply won't be provided.
 
 \subsection{CSS3 Media Queries} 
 
-The I-SEARCH project needs to be compatible with a large range of devices: desktop browsers, phones and tablets. Rather than building several versions of I-SEARCH, we will use CSS3 Media-queries\footnote{\url{http://www.w3.org/TR/css3-mediaqueries/}} to adapt the layout to those devices. Media-queries are not supported in old browsers such as Internet Explorer (version prior to 8) or Mozilla Firefox (version prior to 3.5), but that is not an issue since tablets and phones have browsers that support this feature.
+The \mbox{I-SEARCH} project needs to be compatible with a large range of devices: desktop browsers, phones and tablets. Rather than building several versions of \mbox{I-SEARCH}, we will use CSS3 Media-queries\footnote{\url{http://www.w3.org/TR/css3-mediaqueries/}} to adapt the layout to those devices. Media-queries are not supported in old browsers such as Internet Explorer (version prior to 8) or Mozilla Firefox (version prior to 3.5), but that is not an issue since tablets and phones have browsers that support this feature.
 
 To show our exact strategy, here is how and where different devices are supported by the combination of normal CSS selectors and CSS Media-Queries: 
 \begin{itemize}
@@ -295,34 +295,34 @@ To show our exact strategy, here is how and where different devices are supporte
 
 Canvas in HTML5 refers to the introduction of a new element: {\tt <canvas>}\footnote{\url{http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html}}. This element enable cheap and scriptable rendering of graphics. For instance, since the introduction of {\tt <canvas>} in modern browsers, many HTML5 games have been written because {\tt <canvas>} offers a convenient and fast way to deal with user input and graphic rendering in real-time through its Javascript API. 
 
-In the case of I-SEARCH, our plan is to use {\tt <canvas>} for user input when the query requires a user sketch, and also to display results in novel ways. Indeed, {\tt <canvas>} enables virtually any kind of result visualization, including visualization of audio and video.
+In the case of \mbox{I-SEARCH}, our plan is to use {\tt <canvas>} for user input when the query requires a user sketch, and also to display results in novel ways. Indeed, {\tt <canvas>} enables virtually any kind of result visualization, including visualization of audio and video.
 
-{\tt <canvas>} will be a core element of I-SEARCH. Thus, it is crucial to offer a fallback option for older browsers. We plan to do so by using FlashCanvas\footnote{\url{http://flashcanvas.net/}}.
+{\tt <canvas>} will be a core element of \mbox{I-SEARCH}. Thus, it is crucial to offer a fallback option for older browsers. We plan to do so by using FlashCanvas\footnote{\url{http://flashcanvas.net/}}.
 
 
 \subsection{HTML5 Audio and video}
 HTML5 comes with 2 new elements, {\tt <audio>} and {\tt <video>}, to deal with multimedia elements. The key difference is that video and audio items are now fully rendered in the browser. It means that audio and video are now fully scriptable: rotation, scale, controls, CSS Styles, and so forth. 
 
-In the case of I-SEARCH, this flexibility brought by HTML5 {\tt <audio>} and {\tt <video>} is a huge opportunity to create interesting and interactive visualisations of search results.
+In the case of \mbox{I-SEARCH}, this flexibility brought by HTML5 {\tt <audio>} and {\tt <video>} is a huge opportunity to create interesting and interactive visualisations of search results.
 If  {\tt <audio>} and {\tt <video>} are not available in a certain browser, we will use Adobe Flash\footnote{\url{http://www.adobe.com/products/flashplayer/}} to display media items to users.
 
 \subsection{File API}
 
 The file API is a Javascript API, part of the HTML5 Specification. It ``provides an API for representing file objects in web applications, as well as programmatically selecting them and accessing their data."\footnote{\url{http://www.w3.org/TR/FileAPI/}}. 
 
-This is particularly interesting in the case of I-SEARCH, since users are very likely to compose their query with local files (piece of music, pictures from their local library, etc). The File API allows new paradigm to deal with files, such as native support for drag'n'dropping elements from the desktop to the I-SEARCH interface.
+This is particularly interesting in the case of \mbox{I-SEARCH}, since users are very likely to compose their query with local files (piece of music, pictures from their local library, etc). The File API allows new paradigm to deal with files, such as native support for drag'n'dropping elements from the desktop to the \mbox{I-SEARCH} interface.
 
 This feature is not crucial for user interaction, so we won't provide fallback for older browsers. Indeed, a simple form with the possibility to upload a file will be provided, as shown in figure \ref{fig:input-picture}.
  
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.3\linewidth]{resources/input-picture.png}
-  \caption{Picture panel of the I-SEARCH interface}
+  \caption{Picture panel of the \mbox{I-SEARCH} interface}
   \label{fig:input-picture}
 \end{figure}
 
 \subsection{Geolocation}
-Context-aware search is one of the features of the I-SEARCH framework. This is particularly useful in the case of a user searching on a mobile device. Indeed, he/she is more likely to need information relative to his/her location.
+Context-aware search is one of the features of the \mbox{I-SEARCH} framework. This is particularly useful in the case of a user searching on a mobile device. Indeed, he/she is more likely to need information relative to his/her location.
 
 HTML5 comes with a Javascript API that does just that: the geolocation API. Instead of checking the IP address and/or calling the GPS of a device through proprietary API, the geolocation API enables Web pages to retrieve a user's location with only one line of Javascript: 
 \begin{lstlisting}
