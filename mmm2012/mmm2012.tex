@@ -9,6 +9,7 @@
 \usepackage{subfig}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{subfigure}
 \setcounter{tocdepth}{3}
 
 \usepackage{url}
@@ -286,17 +287,39 @@ The advantages of the described concept are:
 \end{enumerate}
 
 \section{Implementation and Results}
-(Jonas, Arnaud)
 
-The \mbox{I-SEARCH} GUI is built using the Web platform. HTML, CSS and JavaScript are the three main building blocks for the interface. The rationale behind that choice is the following: \mbox{I-SEARCH} needs to be cross-browser and cross-device compatible. The latest specifications of those technologies enable us to do just that. Indeed, CSS3~\cite{css3}, HTML5~\cite{html5} and the therein defined new JavaScript APIs empower the browser in truly novel ways.
+The \mbox{I-SEARCH} GUI is built using the Web platform. HTML, CSS and
+JavaScript are the three main building blocks for the interface. The rationale
+behind that choice is the following: \mbox{I-SEARCH} needs to be cross-browser
+and cross-device compatible. The latest specifications of those technologies
+enable us to do just that. Indeed, CSS3~\cite{css3}, HTML5~\cite{html5} and the
+therein defined new JavaScript APIs empower the browser in truly novel ways.
 
-Our strategy also includes support for older browsers. When browsing the Web, a significant part of users don't have access to a cutting-edge Web browser. If a feature we use is not available for a certain browser version, two choices are available: either drop support for that feature if it is not important (e.g., drop visual shims like CSS shadows or border-radius), or provide alternate solution to mimic the experience. 
+Our strategy also includes support for older browsers. When browsing the Web, a
+significant part of users don't have access to a cutting-edge Web browser. If a
+feature we use is not available for a certain browser version, two choices are
+available: either drop support for that feature if it is not important (e.g.,
+drop visual shims like CSS shadows or border-radius), or provide alternate
+solution to mimic the experience.
 
-We would like to highlight that CSS and HTML are 2 standards that natively enable progressive enhancement thanks to a simple rule: when a Web browser doesn't understand an HTML attribute, a CSS value or selector, it simply \emph{ignores it}. This rule is the guarantee that we can build future-proof pages using CSS and HTML. Web browsers will render the page according to their capabilities: old browsers will render basic markup and styles, while modern browsers will be able to render stunning CSS3 effects.
+We would like to highlight that CSS and HTML are 2 standards that natively
+enable progressive enhancement thanks to a simple rule: when a Web browser
+doesn't understand an HTML attribute, a CSS value or selector, it simply
+\emph{ignores it}. This rule is the guarantee that we can build future-proof
+pages using CSS and HTML. Web browsers will render the page according to their
+capabilities: old browsers will render basic markup and styles, while modern
+browsers will be able to render stunning CSS3 effects.
 
-Of course, progressive enhancement isn't always a good solution, particularly when you want to ensure that all users can access a particular feature. In this case, we will use the \emph{graceful degradation} principle, i.e, we will use fallback solutions when the technology stack is not there to support our needs in a certain browser. 
+Of course, progressive enhancement isn't always a good solution, particularly
+when you want to ensure that all users can access a particular feature. In this
+case, we will use the \emph{graceful degradation} principle, i.e, we will use
+fallback solutions when the technology stack is not there to support our needs
+in a certain browser.
 
-The next parts of this paper discuss, in the case of \mbox{I-SEARCH}, why the use of certain features make sense, and how we plan to use them. We will look at semantic markup, media-queries, canvas, audio and video, geolocation, sensors integration, and device API.
+The next parts of this paper discuss, in the case of \mbox{I-SEARCH}, why the
+use of certain features make sense, and how we plan to use them. We will look at
+semantic markup, media-queries, canvas, audio and video, geolocation, sensors
+integration, and device API.
 
 \subsection{HTML5 Semantic Markup} 
 
@@ -345,13 +368,22 @@ This feature is not crucial for user interaction, so we won't provide fallback f
 \end{figure}
 
 \subsection{Geolocation}
-Context-aware search is one of the features of the \mbox{I-SEARCH} framework. This is particularly useful in the case of a user searching on a mobile device. Indeed, he/she is more likely to need information relative to his/her location.
+Context-aware search is one of the features of the \mbox{I-SEARCH} framework.
+This is particularly useful in the case of a user searching on a mobile device.
+Indeed, he/she is more likely to need information relative to his/her location.
 
-HTML5 comes with a Javascript API that does just that: the geolocation API. Instead of checking the IP address and/or calling the GPS of a device through proprietary API, the geolocation API enables Web pages to retrieve a user's location with only one line of Javascript: 
+HTML5 comes with a Javascript API that does just that: the geolocation API.
+Instead of checking the IP address and/or calling the GPS of a device through
+proprietary API, the geolocation API enables Web pages to retrieve a user's
+location with only one line of Javascript:
 \begin{lstlisting}
 navigator.geolocation.getCurrentPosition()
 \end{lstlisting}
-In the background, the browser calls the device GPS or compute an approximate location thanks to IP address information. Furthermore, the retrieval of a user's location is much more transparent since browsers supporting the geolocation API prompt users for their permission before doing anything. See figure \ref{fig:geolocation-prompt}.
+In the background, the browser calls the device GPS or compute an approximate
+location thanks to IP address information. Furthermore, the retrieval of a
+user's location is much more transparent since browsers supporting the
+geolocation API prompt users for their permission before doing anything. See
+figure \ref{fig:geolocation-prompt}.
 
 \begin{figure}[h!]
   \centering
@@ -363,32 +395,64 @@ In the background, the browser calls the device GPS or compute an approximate lo
 
 \subsection{Sensors}
 
+Another aspect which is important for context-awareness is the use of
+hardware sensors integrated or attached to different device types. 
+Mainly in
+
 \subsection{Device API}
 
 \section{Evaluation}
-(Paul)
-Requirement: result criteria
-Did you understand the interface
-Did you understand the process
-2 Use Cases: Rhythm clapping (UC1) and Games (UC7)?
 
-To validate our interface design on tasks of multimodal search we conducted a user study. 
-We used a comparative study design to explore how the usage of different media types can 
-influence the success rate of search queries. 
-
-Overall, we expected that the user can handle the user interface very easily and gets a 
-result which satisfies her needs. We therefore set the following hypothesis: 
+To validate our interface design on tasks of multimodal search we conducted a
+user study. We used a comparative study design to explore how the usage of
+different media types should look like and how these can influence the success
+rate of search queries. Overall, we expected that the user can handle the user
+interface easily and he gets a result which satisfies his needs. We therefore
+set the following hypothesis: 
 \begin{enumerate}
-  \item (H1) a search query will mostly contain just one modality
-  \item (H2) a search refinement will be done by adding other media types
-  \item (H3) a search refinement will not be done by removing query parts
-  \item (H4) the use of multiple media items in a search query will result
-  in faster search results compared to a single-media search
+  \item (H1) a user will start a search query with just
+one media type,
+  \item (H2) search refinement will be done by adding other media types
+or removing them,
+  \item (H3) all media types are handled similarly. 
 \end{enumerate}
 
-For the user study we recruited N7N (FF,KK,TT,RR,2xGunar,Ohl) participants (NN male and NN female) aged between YYYY and YYYY. All participants were familiar with textual Web-based search. We asked all study participants to find NN different items (one audio file, one 3D model and one image, see Figure 1). All search queries are part of two uses cases which were described in section SSS. For explanation, what should be searched (and find), these items were shown in their original format to the study participants. To perform the search queries a mobile notebook with touch display was used. Consequently, for comparison with single-media search the study participants should find the same objects using common search single-media search engines. Our goal was to validate our interface design as well as to measure the impact of the possibility of multimodal search. 
+For the user study we recruited seven participants (six male and one female)
+aged between 20 and 35. All participants were familiar with textual web-based
+search. We asked all study participants to find three different items (sound of
+a tiger, one 3D model of a flower and one image of a car, see Figure ABCD). For
+explanation, what should be retrieved, these items were shown in their original
+format to the study participants. To perform the search queries a mobile
+notebook with touch display was used. Our goal was to validate our interface
+design as well as to measure the impact of the possibility of multimodal search. 
 
-All users completed all tasks successfully. As a rough measure of task performance
+\begin{figure}[h!]
+\subfigure[Sound of a tiger]{\includegraphics[width=0.3\textwidth]{resources/sound-tiger.jpg}}\hfill 
+\subfigure[3D model of a flower]{\includegraphics[width=0.3\textwidth]{resources/3d-flower.jpg}}\hfill 
+\subfigure[Image of a car]{\includegraphics[width=0.3\textwidth]{resources/image-pickup.jpg}}
+\caption{Sample search items used for user study}
+\end{figure}
+
+In general, we observed that the concept of multimodal search was new and
+unfamiliar to all participants. Before the user study, for all participants a
+web-based search and a text-based search have been identically. Using I-Search
+they have to become aware of the possibility of the meaning of different media
+types and of multimodal interaction (see Table ABCD). Our hypothesis (H1) is not
+supported statistically. It depends highly on the behavior of each individual
+person whether one or more search item or media type is used. In combination
+with (H2) a conclusion out of the interviews is, that adding search items as
+well as customizing them has to be as easy as possible. The participants do not
+suffer obstacles in using one special media type. Thus, if one media type is
+difficult to use, they avoid using it by using different media types, also, if
+this implies, that the search query will be more complicated and challenging.
+This applies also to hypothesis (H3). In order to allow multimodal search
+queries, the following recommendations can be derived from the user study: 
+
+\begin{enumerate}
+  \item No media type should be privileged
+  \item The handling of all media types should be as similar as possible
+  \item Search refinement should be possible in result presentation  
+\end{enumerate}
 
 \section{Conclusion and Future Work}
 (Tom)
