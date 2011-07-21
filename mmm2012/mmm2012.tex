@@ -42,6 +42,10 @@
 Multimodal interaction provides the user with multiple modes of interacting with
 a system, such as gestures, speech, text, video, audio, etc. A multimodal system allows for several distinct means for input and output of data. In this paper, we present our work in the context of the \mbox{I-SEARCH} project, which aims at enabling context-aware querying of a multimodal search framework including real-world data such as user location or temperature.
 
+% @TOMAC by PG: Etwas mehr Inhalt als "present our work in the context of.." 
+% fände ich gut: z.B. Nennung der Konzept MMBag, ... sowie recommendations 
+% der User Study
+
 \keywords{Multimodality, Context Awareness, User Interfaces}
 \end{abstract}
 
@@ -52,6 +56,8 @@ The remainder of this paper is structured as follows: Section~2 presents related
 
 \section{Related Work}
 \label{sec:related}
+
+% @JE by PG: eher "to improve" statt "better" im nächsten Satz
 
 Many people have been involved in the research of better user
 interfaces (UI) for search tasks in the last few years. They widley found
@@ -107,6 +113,13 @@ methods.
 
 \section{Methodology}
 In this Section we present our methodology for context-aware querying for multimodal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
+
+% @JE by PG: mit den Kürzeln kann kein Leser etwas anfangen -->
+% eher beschreibend aufführen
+
+% by PG: instead of MMBag use a more desribing title like: 
+% Interface for combining different search modalities
+% (same problem with next subtitles )
 
 \subsection{MuSeBag}
 MuSeBag stands for {\bf Mu}ltimodal {\bf Se}arch {\bf Bag} and designates the
@@ -444,14 +457,16 @@ user study. We used a comparative study design to explore how the usage of
 different media types should look like and how these can influence the success
 rate of search queries. Overall, we expected that the user can handle the user
 interface easily and he gets a result which satisfies his needs. We therefore
-set the following hypothesis: 
-\begin{enumerate}
-  \item (H1) a user will start a search query with just
-one media type,
-  \item (H2) search refinement will be done by adding other media types
-or removing them,
-  \item (H3) all media types are handled similarly. 
-\end{enumerate}
+set the following hypothesis: (H1) a user will start a search query with just one media type, (H2) search refinement will be done by adding other media types
+or removing them, (H3) all media types are handled similarly.
+
+%\begin{enumerate}
+%  \item (H1) a user will start a search query with just
+%one media type,
+%  \item (H2) search refinement will be done by adding other media types
+%or removing them,
+%  \item (H3) all media types are handled similarly. 
+%\end{enumerate}
 
 For the user study we recruited seven participants (six male and one female)
 aged between 20 and 35. All participants were familiar with textual web-based
@@ -479,7 +494,7 @@ person whether one or more search item or media type is used. In combination
 with (H2) a conclusion out of the interviews is, that adding search items as
 well as customizing them has to be as easy as possible. The participants do not
 suffer obstacles in using one special media type. Thus, if one media type is
-difficult to use, they avoid using it by using different media types, also, if
+difficult to use, they avoid using it by using different media types, also if
 this implies, that the search query will be more complicated and challenging.
 This applies also to hypothesis (H3). In order to allow multimodal search
 queries, the following recommendations can be derived from the user study: 
