@@ -108,11 +108,11 @@ methods.
 \section{Methodology}
 In this Section we present our methodology for context-aware querying for multimodal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
 
-\subsection{MMBag}
-MMBag stands for Multi-Modal Bag and designates the \mbox{I-SEARCH} User
-Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MMBag.
+\subsection{MuSeBag}
+MuSeBag stands for {\bf Mu}ltimodal {\bf Se}arch {\bf Bag} and designates the
+\mbox{I-SEARCH} User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MuSeBag.
 
-Multimodal search engines are still very experimental at the time of writing. When building MMBag, we tried to look for a common pattern in search-related actions. Indeed, MMBag remains a search interface at its core. In order for users to interact efficiently with \mbox{I-SEARCH}, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
+Multimodal search engines are still very experimental at the time of writing. When building MuSeBag, we tried to look for a common pattern in search-related actions. Indeed, MuSeBag remains a search interface at its core. In order for users to interact efficiently with \mbox{I-SEARCH}, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
 
 However, \mbox{I-SEARCH} can't directly benefit from this broadly accepted pattern, as a multimodal search engine must accept a large number of types of input at the same time: audio, video, 3D objects, sketches, etc. How can this be achieved? Some search engines, even if they don't have the need for true multimodal querying, do have the need to accept input which is not plain text.
 
@@ -397,10 +397,13 @@ figure \ref{fig:geolocation-prompt}.
 
 Another aspect which is important for context-awareness is the use of
 hardware sensors integrated or attached to different device types. 
-Knowing the orientation and acceleration of a device or capturing the user
-in 3D space in order to detect gestures or
-Mainly in mobile devices accelerometers and gyroscopes are integrated and
-can be accessed through the device specific APIs. 
+Those sensors are capable to retrieve the orientation and
+acceleration of a device or capturing the user and body parts in 3D space.
+With that knowledge the system is able to make assumptions about the users
+direct enviroment or to detect gestures which further increases the overall
+context-awareness. 
+Mainly in mobile devices accelerometers and gyroscopes are integrated and can be
+accessed through the device specific APIs.
 
 HTML5 comes with specific events that target those sensors and define unified
 events bundeled together in the specification for the \emph{DeviceOrientation}
@@ -417,12 +420,22 @@ window.addEventListener('deviceorientation', function(event) {
 Other attached sensors like a depth-sensor for tracking people in 3D space
 does not have a standard with which their data can be captured in a browser
 enviroment. For those sensors we create tiny service applications which capture
-the sensor data and stream that with the help of HTML5 websockets
-\cite{websockets} to any browser.
+the sensor data and stream that via a webservice which can be captured to any
+web browser with the help of HTML5 websockets \cite{websockets}.
 
 \subsection{Device API}
 
-
+With the Device API \cite{deviceAPI} the W3C is currently creating the next
+standard related to HTML5. It is mainly targeted to give web browsers access to
+to attached hardware devices of the client computer. Therefore
+the Media Capture API, which is part of the Device API allows in the future
+to access the microphone and webcam of the user. 
+We will facilitate this API in combination with appropriate fallback routines
+in order to create query media like speech/audio input as well as pictures
+captured on the fly. These features increase the flexibility of the approach of
+\emph{MuSeBag} and adds more to the creation of multimodal queries as well as
+to the interaction possibilities made available via \emph{UIIFace} (i.e. speech
+commands and gesture recognition).
 
 \section{Evaluation}
 
