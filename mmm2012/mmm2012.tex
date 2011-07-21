@@ -6,7 +6,6 @@
 \usepackage{eurosym}
 \usepackage[normalem]{ulem}
 \usepackage{alltt}
-\usepackage{subfig}
 \usepackage{amssymb}
 \usepackage{listings}
 \usepackage{subfigure}
@@ -40,7 +39,8 @@
 \maketitle
 
 \begin{abstract}
-Multimodal interaction provides the user with multiple modes of interacting with a system, such as gestures, speech, text, video, audio, etc. A multimodal system allows for several distinct means for input and output of data. In this paper, we present our work in the context of the \mbox{I-SEARCH} project, which aims at enabling context-aware querying of a multimodal search framework including real-world data such as user location or temperature. 
+Multimodal interaction provides the user with multiple modes of interacting with
+a system, such as gestures, speech, text, video, audio, etc. A multimodal system allows for several distinct means for input and output of data. In this paper, we present our work in the context of the \mbox{I-SEARCH} project, which aims at enabling context-aware querying of a multimodal search framework including real-world data such as user location or temperature.
 
 \keywords{Multimodality, Context Awareness, User Interfaces}
 \end{abstract}
@@ -397,9 +397,32 @@ figure \ref{fig:geolocation-prompt}.
 
 Another aspect which is important for context-awareness is the use of
 hardware sensors integrated or attached to different device types. 
-Mainly in
+Knowing the orientation and acceleration of a device or capturing the user
+in 3D space in order to detect gestures or
+Mainly in mobile devices accelerometers and gyroscopes are integrated and
+can be accessed through the device specific APIs. 
+
+HTML5 comes with specific events that target those sensors and define unified
+events bundeled together in the specification for the \emph{DeviceOrientation}
+Event \cite{deviceOrientation}. Referring the specification the orientation of
+the device can be retrieved with the following Javascript code:
+\begin{lstlisting}
+window.addEventListener('deviceorientation', function(event) {
+  var a = event.alpha;
+  var b = event.beta;
+  var g = event.gamma;
+}, false);
+\end{lstlisting}
+
+Other attached sensors like a depth-sensor for tracking people in 3D space
+does not have a standard with which their data can be captured in a browser
+enviroment. For those sensors we create tiny service applications which capture
+the sensor data and stream that with the help of HTML5 websockets
+\cite{websockets} to any browser.
 
 \subsection{Device API}
+
+
 
 \section{Evaluation}
 
