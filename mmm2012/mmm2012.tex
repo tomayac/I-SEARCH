@@ -114,16 +114,16 @@ methods.
 \section{Methodology}
 In this Section we present our methodology for context-aware querying for multimodal search engines, split up in three sub-tasks \emph{MMBag}, \emph{UIIFace}, and \emph{CoFind}.
 
-% @JE by PG: mit den Kürzeln kann kein Leser etwas anfangen -->
-% eher beschreibend aufführen
-
 % by PG: instead of MMBag use a more desribing title like: 
 % Interface for combining different search modalities
 % (same problem with next subtitles )
+% by Jonas: I changed the subsection titles, Tom/Paul/Arnaud just make
+% adjustments as you like if you don't agree with it.
 
-\subsection{MuSeBag}
-MuSeBag stands for {\bf Mu}ltimodal {\bf Se}arch {\bf Bag} and designates the
-\mbox{I-SEARCH} User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MuSeBag.
+\subsection{Multimodal query interfaces}
+In order to create a visual platform for multimodal quering between user and
+search engine the concept of MuSeBag was developed. MuSeBag stands for {\bf
+Mu}ltimodal {\bf Se}arch {\bf Bag} and designates the \mbox{I-SEARCH} User Interface. It comes with specific requirements linked with the need for users to use multiple types of input: audio files or stream, video files, 3D objects, hand drawings, real-world information such as geolocation or time, image files and of course, plain text. This part of the paper shows the approach chosen to create MuSeBag.
 
 Multimodal search engines are still very experimental at the time of writing. When building MuSeBag, we tried to look for a common pattern in search-related actions. Indeed, MuSeBag remains a search interface at its core. In order for users to interact efficiently with \mbox{I-SEARCH}, we needed a well-known interface paradigm. Accross the Web, a pattern has the monopoly for search related actions:  the text field, where a user can focus, enter her query, and trigger subsequent search actions. From big Web search engines such as Google, Yahoo or Bing, to small internal search engines, the pattern stays the same. 
 
@@ -171,14 +171,16 @@ Even if the Search-by-image solution seems very elegant, this is still not suita
   \label{fig:isearch-ui}
 \end{figure}
 
-\subsection{UIIFace}
+\subsection{Multimodal interaction}
 
 Interaction is an important factor when it comes to context-awareness and
-multimodality. In order to deliver a Graphical User Interface (GUI) which is
-able to facilitate all the possibilities of an multimodal search engine, an
+multimodality. In order to deliver a Graphical User Interface (GUI) which
+is able to facilitate all the possibilities of an multimodal search engine, an
 very flexible approach with a rich interaction methodology is needed. 
-Further multimodal quering could also involve the way a user interacts with the
-system as part of the query. 
+Not only the way search queries are build should be multimodal, also the
+interaction to generate and navigate in such a multimodal interface should be
+multimodal. Further multimodal quering could also involve the way a user
+interacts with the system as part of the query.
 
 To target all those needs the concept of UIIFace (Unified Interaction Interface)
 is introduced as general interaction layer for context-arwe multimodal quering.
@@ -228,7 +230,7 @@ interface developer to take care of the input modality through the unified
 command layer which provides practically modality-independent interaction
 commands.
 
-\subsection{CoFind}
+\subsection{Collaborative Search}
 
 Another part of our methodology targets the increased complexity of search
 tasks and the necessity to collaborate on those tasks in order to formulate
