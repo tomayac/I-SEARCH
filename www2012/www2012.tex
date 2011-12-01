@@ -63,17 +63,6 @@ framexbottommargin=-1em,
 {\closequote\vspace{-4.5pt}
 }
 
-% bullet numbers
-\usepackage{tkz-graph}
-\usetikzlibrary{matrix,arrows,decorations.pathmorphing,shapes}
-\newcommand{\dobulletnumber}[1]{\node[circle,text=white,fill=gray,anchor=west,inner sep=1pt] {\sffamily #1}}
-\newcommand{\bulletnumber}[1]{\tikz[baseline=-2.5,overlay]\dobulletnumber{#1};}
-\newcommand{\bulletref}[1]{\tikz[baseline=-2.5]\dobulletnumber{\fontsize{8}{8}\selectfont#1};}
-
-\hyphenation{DBpedia RESTdesc}
-
-\newcommand{\owls}{\mbox{OWL-S}}
-
 \begin{document}
 
 \title{I-SEARCH -- A Multimodal Search Engine based on\\*Rich Unified Content Description (RUCoD)}
@@ -113,34 +102,57 @@ Antonio Camurri\\
 \maketitle
 
 \begin{abstract}
-\todo{Write Abstract}
+
 \end{abstract}
 
-\category{H.3.4}{Information Systems}{Information Storage and Retrieval}[Semantic Web]
 \category{H.3.4}{Information Systems}{Information Storage and Retrieval}[World Wide Web]
 \category{H.3.5}{Online Information Services}{Web-based services}
 
-\keywords{\todo{Write Keywords}}
+\keywords{Multimodality, Rich Unified Content Description, search engine}
 
 \section{Introduction}
-Since the beginning of the age of Web search engines in 1990, the search process is associated with a textual input field.
+Since the beginning of the age of Web search engines in 1990, the search process is associated with a text input field.
 From the first search engine, Archie~\cite{archie}, to state-of-the-art search engines like WolframAlpha~\cite{wolframalpha}, this fundamental input paradigm has not changed.
-In a certain sense the search process has been revolutionized on mobile devices through voice input support like Apple's Siri~\cite{siri} for iOS, Google's Voice Actions~\cite{voiceactions} for Android, and, also from Google, through Voice Search~\cite{voicesearch} for desktop computers.
-Support for the human voice as an input modality was mainly driven by shortcomings of mobile keyboards.
-However, what is still missing is a truly multimodal search engine. 
+In a certain sense the search process has been revolutionized on mobile devices through the addition of voice input support like Apple's Siri~\cite{siri} for iOS, Google's Voice Actions~\cite{voiceactions} for Android, and through Voice Search~\cite{voicesearch} for desktop computers.
+Support for the human voice as an input modality is mainly driven by shortcomings of (mobile) keyboards.
+One modality, text, is simply replaced by another, voice.
+However, what is still missing is a truly multimodal search engine.
+If the searched-for item is slow, sad, minor scale piano music\footnote{Sad, slow piano music: \url{http://youtu.be/a_Am4cHMBKM}}, the best input modality might be to just upload a short sample (``audio'') and an unhappy smiley face (``emotion'').
+When searching for the sound of Times Square, New York\footnote{Sound of Times Square: \url{http://youtu.be/_ttz9QDj0cw}}, the best input modality might be the coordinates (``geolocation'') of Times Square and a photo of a yellow cab (``image'').
+Finally, when searching for a Greek-looking font\footnote{Greek-looking font: \url{http://www.dafont.com/cleopatra.font}}, the best input modality might be to just scribble some letters in the desired style (``sketch'').
+The outlined search scenarios are of very different nature, and even for human beings it is not easy to find \emph{the} correct answer, let alone that such answer exists for each scenario.
+With \mbox{I-SEARCH}, we thus strive for a paradigm shift; away from textual term-based search towards a more explorative multimodality-driven search experience.
+
+It is evident that for the outlined scenarios to work, a significant investment in describing the underlying media items is necessary.
+Therefore, in~\cite{ijmis2010}, we have first introduced the concept of so-called \emph{content objects}, and second, a description format named \emph{Rich Unified Content Description (RUCoD)}.
+Content objects are rich media presentations, enclosing different types of media, along with real-world information and user-related information.
+RUCoD provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
+
+In this paper, we give an overview on the \mbox{I-SEARCH} project so far.
+In \autoref{sec:projectgoals}, we outline the general objectives of  \mbox{I-SEARCH}.
+\autoref{sec:projectresults} highlights significant achievements.
+We describe the details of our system in \autoref{sec:systemdemonstration}.
+Relevant related work is shown in \autoref{sec:relatedwork}.
+We give an outlook on future work in \autoref{sec:futurework}.
+The paper is closed with a conclusion in \autoref{sec:conclusion}.
+
+\section{Project Goals} \label{sec:projectgoals}
 
 
-\section{Project Goals}
+\section{Project Results} \label{sec:projectresults}
 
-\section{Project Results}
 
-\section{System Demonstration}
+\section{System Demonstration} \label{sec:systemdemonstration}
 
-\section{Related Work}
 
-\section{Future Work}
+\section{Related Work} \label{sec:relatedwork}
+\cite{multimodalitysun} \cite{mudra2011} \cite{w3cmultimodal2003} \cite{pharos2008}
 
-\section{Conclusion}
+\section{Future Work} \label{sec:futurework}
+
+
+\section{Conclusion} \label{sec:conclusion}
+
 
 \section{Acknowledgments}
 This work was partially supported by the European Commission under Grant No. 248296 FP7 \mbox{I-SEARCH} project.
