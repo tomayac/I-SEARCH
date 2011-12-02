@@ -140,13 +140,32 @@ The paper is closed with a conclusion in \autoref{sec:conclusion}.
 
 
 \section{Project Results} \label{sec:projectresults}
-
+\url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd}
+\url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}
 
 \section{System Demonstration} \label{sec:systemdemonstration}
 
 
 \section{Related Work} \label{sec:relatedwork}
-\cite{multimodalitysun} \cite{mudra2011} \cite{w3cmultimodal2003} \cite{pharos2008}
+We start covering related work with a differentiation of terms.
+\emph{Multimodal search} can be used in two senses; (i), in the sense of multimodal result output based on unimodal query input, and (ii), in the sense of both multimodal result output and multimodal query input.
+We follow the second definition, i.e., require the query input interface to allow for multimodality.
+We do not consider the first definition, as common search engines today already by default return multimodal results.
+
+An interesting multimodal search engine was developed in the scope of the PHAROS European project~\cite{pharos2008}. While the initial query is still keyword-based, the search engine allows for refinements in form of facets, like location, that can be considered modalities.
+\mbox{I-SEARCH} develops this concept one step further by supporting multimodality to start with.
+
+In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
+Consumers can navigate on-device portals by searching with text, voice, and camera images.
+Rahn Frederick's article is relevant to \mbox{I-SEARCH}, as it is specifically focused on mobile devices, albeit the scope of our project is further in the sense of also covering desktop devices. 
+
+In a W3C Note~\cite{w3cmultimodal2003} , Larson \textit{et al.} describe a multimodal interaction framework, and identify the major components for multimodal systems.
+The multimodal interaction framework is not an architecture \textit{per se}, but rather a level of abstraction above an architecture and identifies the markup languages used to describe information required by components and for data flows among components.
+
+With Mudra~\cite{mudra2011}, Hoste \textit{et al.} present a unified multimodal interaction framework supporting the integrated processing of low-level data streams as well as high-level semantic inferences.
+Their architecture is designed to support a growing set of input modalities as well as to enable the integration of existing or novel multimodal fusion engines.
+Input fusion engines combine and interpret data from multiple input modalities in a parallel or sequential way.
+With \mbox{I-SEARCH}, we present a search engine that captures modalities sequentially, however, processes them in parallel.
 
 \section{Future Work} \label{sec:futurework}
 
