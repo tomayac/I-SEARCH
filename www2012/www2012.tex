@@ -9,6 +9,9 @@
 \usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
+\def\subfloatautorefname{Subfigure}
+
+\usepackage[lofdepth,lotdepth]{subfig}
 
 \usepackage{enumitem}
 
@@ -140,11 +143,95 @@ The paper is closed with a conclusion in \autoref{sec:conclusion}.
 
 
 \section{Project Results} \label{sec:projectresults}
-\url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd}
-\url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}
+
+\subsection{Rich Unified Content Description (RUCoD)}
+In order to describe \emph{content objects} consistently, a Rich Unified Content Description (RUCoD) format was developed.
+The format is specified in form of XML schemas and available on the project website\footnote{RUCoD XML schemas: \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd} and \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}.}.
+
+\begin{lstlisting}[caption=Sample RUCoD snippet (namespace declarations and some details removed for legibility reasons).,label={lst:rucod}]
+<RUCoD>
+  <Header>
+    <ContentObjectType>
+      Multimedia Collection
+    </ContentObjectType>
+    <ContentObjectName xml:lang="en-US">
+      AM General Hummer
+    </ContentObjectName>
+    <ContentObjectID/>
+    <ContentObjectVersion>1</ContentObjectVersion>
+    <ContentObjectCreationInformation>
+      <Creator>
+        <Name>CoFetch Script</Name>
+      </Creator>
+      <Contributor>
+        <Name>Google</Name>
+      </Contributor>
+    </ContentObjectCreationInformation>
+    <Tags>
+      <MetaTag name="UserTag" type="xsd:string">
+        Hummer
+      </MetaTag>
+    </Tags>
+    <ContentObjectTypes>
+      <MultimediaContent type="Object3d">
+        <FreeText>
+          This is not Mirza's model.
+        </FreeText>
+        <MediaName>2001 Hummer H1</MediaName>
+        <MetaTag name="UserTag" type="xsd:string">
+          Hummer
+        </MetaTag>
+        <MediaLocator>
+          <MediaUri>
+            http://sketchup.google.com/[...]
+          </MediaUri>
+          <MediaPreview>
+            http://sketchup.google.com/[...]
+          </MediaPreview>
+        </MediaLocator>
+        <MediaCreationInformation>
+          <Author>
+            <Name>ZXT</Name>
+          </Author>
+          <Licensing>
+            Google 3D Warehouse License
+          </Licensing>
+        </MediaCreationInformation>
+        <Size>1840928</Size>
+      </MultimediaContent>
+      <RealWorldInfo>
+        <MetadataUri filetype="rwml">
+          AM_General_Hummer.rwml
+        </MetadataUri>
+      </RealWorldInfo>
+    </ContentObjectTypes>
+  </Header>
+</RUCoD>
+\end{lstlisting}
+
+\subsection{Graphical User Interface}
+The \mbox{I-SEARCH} graphical user interface (GUI) is implemented in pure HTML5, JavaScript, and Cascading Style Sheets (CSS), the main objective being to share one common code base for all possible input devices (Subfigure~\ref{fig:devices} shows mobile devices of different screen sizes and operating systems).
+At its core, the GUI consists of a Web application that dynamically adapts itself to the device, be it mobile, or desktop.
+
+\begin{figure}
+  \centering
+    \subfloat[][Multimodal query consisting of \emph{geolocation}, \emph{video}, \emph{emotion}, and \emph{sketch} (in progress).]{
+      \includegraphics[width=0.75\columnwidth]{./resources/isearch.jpg}
+      \label{fig:isearch}}
+    \qquad
+    \subfloat[][Running on some mobile devices with different screen sizes and operating systems.]{
+      \includegraphics[width=0.75\columnwidth]{./resources/devices.jpg}
+      \label{fig:devices}}
+\caption{\mbox{I-SEARCH} graphical user interface.}
+\label{fig:gui}
+\end{figure}
+
+\subsection{Video}
+
+\subsection{Audio}
 
 \section{System Demonstration} \label{sec:systemdemonstration}
-
+We maintain a bleeding-edge demonstration server\footnote{Demonstration: \url{http://isearch.ai.fh-erfurt.de/}}, and a screencast\footnote{Screencast: \url{http://youtu.be/-chzjEDcMXU}}
 
 \section{Related Work} \label{sec:relatedwork}
 We start covering related work with a differentiation of terms.
@@ -159,7 +246,7 @@ In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimoda
 Consumers can navigate on-device portals by searching with text, voice, and camera images.
 Rahn Frederick's article is relevant to \mbox{I-SEARCH}, as it is specifically focused on mobile devices, albeit the scope of our project is further in the sense of also covering desktop devices. 
 
-In a W3C Note~\cite{w3cmultimodal2003} , Larson \textit{et al.} describe a multimodal interaction framework, and identify the major components for multimodal systems.
+In a W3C Note~\cite{w3cmultimodal2003}, Larson \textit{et al.} describe a multimodal interaction framework, and identify the major components for multimodal systems.
 The multimodal interaction framework is not an architecture \textit{per se}, but rather a level of abstraction above an architecture and identifies the markup languages used to describe information required by components and for data flows among components.
 
 With Mudra~\cite{mudra2011}, Hoste \textit{et al.} present a unified multimodal interaction framework supporting the integrated processing of low-level data streams as well as high-level semantic inferences.
@@ -168,7 +255,6 @@ Input fusion engines combine and interpret data from multiple input modalities i
 With \mbox{I-SEARCH}, we present a search engine that captures modalities sequentially, however, processes them in parallel.
 
 \section{Future Work} \label{sec:futurework}
-
 
 \section{Conclusion} \label{sec:conclusion}
 
