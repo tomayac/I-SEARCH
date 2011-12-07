@@ -6,7 +6,7 @@
 \usepackage[activate=compatibility]{microtype}
 
 % autoref command
-\usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black,draft]{hyperref}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
 \def\subfloatautorefname{Subfigure}
@@ -80,26 +80,37 @@ Thomas Steiner\\
 	\email{tomac@google.com}
 \alignauthor
 Jonas Etzold\\
-	\affaddr{FH Fulda}
+	\affaddr{University of Erfurt}\\
+	\affaddr{Applied Computer Science}\\
+	\affaddr{99051 Erfurt, Germany}\\
+	\email{jonas.etzold@fh-erfurt.de}
 \alignauthor
 Paul Grimm\\	
-	\affaddr{FH Fulda}
+	\affaddr{Hochschule Fulda}\\
+	\affaddr{Marquardstr. 35}\\
+	\affaddr{36039 Fulda, Germany}\\
+	\email{paul.grimm@hs-fulda.de}
 \and
+\alignauthor
+Lorenzo Sutton\\
+	\affaddr{Accademia Nazionale di}\\
+	\affaddr{Santa Cecilia -- Fondazione}\\
+	\affaddr{00196 Roma, Italy}\\
+	\email{l.sutton@santacecilia.it}
+\alignauthor	
 Francesco Nucci\\
 	\affaddr{ENG}
 \alignauthor
 Vincenzo Croce\\
 	\affaddr{ENG}
-\alignauthor
-Antonio Camurri\\
-	\affaddr{UNIGE}
 }
 
 \additionalauthors{Additional authors: 
   Thanassis Mademlis (ITI),
   Alberto Massari (UNIGE),
   Petros Daras (ITI),
-  Apostolos Axenopoulos (ITI), and
+  Apostolos Axenopoulos (ITI),
+  Antonio Camurri (UNIGE), and
   Dimitrios Tzovaras (ITI)
 }
 \maketitle
@@ -217,11 +228,11 @@ At its core, the GUI consists of a Web application that dynamically adapts itsel
 \begin{figure}
   \centering
     \subfloat[][Multimodal query consisting of \emph{geolocation}, \emph{video}, \emph{emotion}, and \emph{sketch} (in progress).]{
-      \includegraphics[width=0.75\columnwidth]{./resources/isearch.jpg}
+      \includegraphics[width=0.65\columnwidth]{./resources/isearch.jpg}
       \label{fig:isearch}}
     \qquad
     \subfloat[][Running on some mobile devices with different screen sizes and operating systems.]{
-      \includegraphics[width=0.75\columnwidth]{./resources/devices.jpg}
+      \includegraphics[width=0.65\columnwidth]{./resources/devices.jpg}
       \label{fig:devices}}
 \caption{\mbox{I-SEARCH} graphical user interface.}
 \label{fig:gui}
@@ -229,9 +240,16 @@ At its core, the GUI consists of a Web application that dynamically adapts itsel
 
 \subsection{Video}
 
+\subsection{Image} 
 
 \subsection{Audio}
 
+\subsection{Content Providers}
+The Accademia Nazionale di Santa Cecilia (ANSC) holds various digital archives amongst which the most important Italian ethnomusicology archive.
+The Accademia makes available all of its digital content to the \mbox{I-SEARCH} project as well as its expertise for the development of requirements and use cases related to music.
+It is also actively involved in user testing and the overall content collection effort for the project.
+
+EasternGraphics \todo{Wait for Sabine's text}.
 
 \section{System Demonstration} \label{sec:systemdemonstration}
 With \mbox{I-SEARCH} being in its second year, there is now some basic functionality in place.
