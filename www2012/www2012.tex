@@ -228,10 +228,19 @@ At its core, the GUI consists of a Web application that dynamically adapts itsel
 
 \subsection{Video}
 
+
 \subsection{Audio}
 
+
 \section{System Demonstration} \label{sec:systemdemonstration}
-We maintain a bleeding-edge demonstration server\footnote{Demonstration: \url{http://isearch.ai.fh-erfurt.de/}}, and a screencast\footnote{Screencast: \url{http://youtu.be/-chzjEDcMXU}}
+With \mbox{I-SEARCH} being in its second year, there is now some basic functionality in place.
+We maintain a bleeding-edge demonstration server\footnote{Demonstration: \url{http://isearch.ai.fh-erfurt.de/}}, and have recorded a screencast\footnote{Screencast: \url{http://youtu.be/-chzjEDcMXU}} that shows some of the interaction patterns.
+The GUI runs on both mobile and desktop devices, and adapts dynamically to the available screen real estate, which, especially on mobile devices, can be a challenge.
+Supported input modalities at this point are \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{geolocation}, and \emph{text}.
+For \emph{emotion}, an innovative emotion slider open source solution~\cite{emotionslider} was adapted to our needs.
+The GUI supports innovative \textit{drag and drop} user interactions and we aim for supporting low level device access for audio and video uploads.
+For \emph{3D objects}, we support Web GL powered 3D views of models.
+\emph{Text} can be entered via speech input based on the WAMI toolkit~\cite{wami}, or typed in via the keyboard.
 
 \section{Related Work} \label{sec:relatedwork}
 We start covering related work with a differentiation of terms.
