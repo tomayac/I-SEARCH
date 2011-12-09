@@ -80,13 +80,13 @@ Thomas Steiner\\
 	\email{tomac@google.com}
 \alignauthor
 Jonas Etzold\\
-	\affaddr{University of Erfurt}\\
-	\affaddr{Applied Computer Science}\\
-	\affaddr{99051 Erfurt, Germany}\\
-	\email{jonas.etzold@fh-erfurt.de}
+	\affaddr{Fulda University of Applied Sciences}\\
+	\affaddr{Marquardstr. 35}\\
+	\affaddr{36039 Fulda, Germany}\\
+	\email{jonas.etzold@informatik.hs-fulda.de}
 \alignauthor
 Paul Grimm\\	
-	\affaddr{Hochschule Fulda}\\
+	\affaddr{Fulda University of Applied Sciences}\\
 	\affaddr{Marquardstr. 35}\\
 	\affaddr{36039 Fulda, Germany}\\
 	\email{paul.grimm@hs-fulda.de}
@@ -164,7 +164,7 @@ Through the increasing availability of location-aware capture devices such as di
 \section{Project Results} \label{sec:projectresults}
 
 \subsection{Rich Unified Content Description (RUCoD)}
-In order to describe \emph{content objects} consistently, a \emph{Rich Unified Content Description (RUCoD)} format was developed.
+In order to describe content objects consistently, a \emph{Rich Unified Content Description (RUCoD)} format was developed.
 The format is specified in form of XML schemas and available on the project website\footnote{\emph{RUCoD} XML schemas: \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd} and \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}.}.
 The description format has been introduced in full detail in~\cite{ijmis2010}, \autoref{lst:rucod} illustrates \emph{RUCoD} with an example.
 
@@ -242,22 +242,50 @@ At its core, the GUI consists of a Web application that dynamically adapts itsel
     \subfloat[][Running on some mobile devices with different screen sizes and operating systems.]{
       \includegraphics[width=0.65\columnwidth]{./resources/devices.jpg}
       \label{fig:devices}}
+    \qquad
+    \subfloat[][Treemap results visualization showing different clusters of images.]{
+      \includegraphics[width=0.65\columnwidth]{./resources/treemap.pdf}
+      \label{fig:treemap}}      
 \caption{\mbox{I-SEARCH} graphical user interface.}
 \label{fig:gui}
 \end{figure}
 
-\subsection{Video}
+The GUI utilizes a JavaScript-based component called \emph{UIIFace}~\cite{mmm2012}, which enables the user to interact with \mbox{I-SEARCH} in a multimodal manner via a wide range of modern input modalities like touch, touch-less gestures, or speech; always depending on the users' needs and device capabilities.
+Further the GUI provides a WebSocket-based collaborative search tool called \emph{CoFind}~\cite{mmm2012} that enables users to search collaboratively and receive results in a shared results basket, and to exchange messages throughout the search process.
+A third component called \emph{pTag}~\cite{mmm2012} produces personalized tag recommendations to create and filter search queries, and creates suggestions to tag certain result items.
 
-\subsection{Image} 
+\subsection{Video and Image}
+The video mining component aims to produce a video summary as a set of recurrent image patches to give a visual representation of the video to the user.
+These patches can be used to refine search and/or to navigate more easily in videos or images.
+For this purpose, we use a technique of Letessier \textit{et al.}~\cite{Letessier11} consisting of a weighted and adaptive sampling strategy aiming to select the most relevant query regions from a set of images.
+The images are the video key frames and a new clustering method is introduced that returns a set of suggested object-based visual queries.
+
+The image search component performs approximate vector search on either local or global image descriptors to speed up response time on large scale databases.
 
 \subsection{Audio}
+Innovations proposed in \mbox{I-SEARCH} include (i), the extraction of expressive and emotional information conveyed by a user to build a query, and (ii), the possibility to build queries resulting from a social verbal or non-verbal interaction among a group of users.
+The I-SEARCH platform includes real-time algorithms for the analysis of non-verbal emotional behavior expressed by full body gestures, algorithms for the analysis of the social behavior in a group of users, and  methods to extract data from sensors for accessing real-world information.
+
+\subsection{3D Objects}
+The 3D object descriptor extractor is the component in charge of extracting low level features from 3D objects and is invoked during the content analytics process.
+More specifically, it takes as input a 3D object and returns a fragment of low level descriptors fully compliant with the \emph{RUCoD} format.
+
+\subsection{Visualization}
+\mbox{I-SEARCH} uses sophisticated information visualization techniques that support not only querying information, but also browsing techniques for effectively locating relevant information.
+The presentation of search results is guided by analytic processes such as clustering and dimensionality reduction that are performed after the retrieval process and intend to discover relations among the data.
+This additional information is subsequently used to present the results to the user by means of modern information visualization techniques such as treemaps, an example of such can be seen in Subfigure \autoref{fig:treemap}.
+The visualization interface is able to seamlessly mix results from multiple modalities
+ 
+\subsection{Orchestration}
+One project partner is involved in the orchestration of the particular components of the other partners.
+In this context, a so-called \emph{Content Analytics Controller (CAC)} has been developed, which is the component in charge of orchestrating the content analytics process for content object enrichment via low level description extraction.
+As a second component, a \emph{RUCoD} authoring tool was built.
 
 \subsection{Content Providers}
-The Accademia Nazionale di Santa Cecilia (ANSC) holds various digital archives amongst which the most important Italian ethnomusicology archive.
-The Accademia makes available all of its digital content to the \mbox{I-SEARCH} project as well as its expertise for the development of requirements and use cases related to music.
-It is also actively involved in user testing and the overall content collection effort for the project.
-
-EasternGraphics \todo{Wait for Sabine's text}.
+The first content provider in the \mbox{I-SEARCH} projects holds an important Italian ethnomusicology archive.
+The partner makes available all of its digital content to the project as well as its expertise for the development of requirements and use cases related to music.
+The second content provider is an office furniture dealer with a big catalogue of individually customizable pieces of furniture. 
+Both partners are also actively involved in user testing and the overall content collection effort for the project via deployed Web services that return their results in the \emph{RUCoD} format.
 
 \section{System Demonstration} \label{sec:systemdemonstration}
 With \mbox{I-SEARCH} being in its second year, there is now some basic functionality in place.
@@ -275,17 +303,16 @@ We start covering related work with a differentiation of terms.
 We follow the second definition, i.e., require the query input interface to allow for multimodality.
 We do not consider the first definition, as common search engines today already by default return multimodal results.
 
-An interesting multimodal search engine was developed in the scope of the PHAROS European project~\cite{pharos2008}. While the initial query is still keyword-based, the search engine allows for refinements in form of facets, like location, that can be considered modalities.
-\mbox{I-SEARCH} develops this concept one step further by supporting multimodality to start with.
-
-In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
+An interesting multimodal search engine was developed in the scope of the PHAROS European project~\cite{pharos2009}.
+While the initial query is still keyword-based, the search engine allows for refinements in form of facets, like location, that can be considered modalities.
+\mbox{I-SEARCH} develops this concept one step further by supporting multimodality from the beginning.In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
 Consumers can navigate on-device portals by searching with text, voice, and camera images.
 Rahn Frederick's article is relevant to \mbox{I-SEARCH}, as it is specifically focused on mobile devices, albeit the scope of our project is further in the sense of also covering desktop devices. 
 
 In a W3C Note~\cite{w3cmultimodal2003}, Larson \textit{et al.} describe a multimodal interaction framework, and identify the major components for multimodal systems.
 The multimodal interaction framework is not an architecture \textit{per se}, but rather a level of abstraction above an architecture and identifies the markup languages used to describe information required by components and for data flows among components.
 
-With Mudra~\cite{mudra2011}, Hoste \textit{et al.} present a unified multimodal interaction framework supporting the integrated processing of low-level data streams as well as high-level semantic inferences.
+With Mudra~\cite{mudra2011}, Hoste \textit{et al.} present a unified multimodal interaction framework supporting the integrated processing of low level data streams as well as high level semantic inferences.
 Their architecture is designed to support a growing set of input modalities as well as to enable the integration of existing or novel multimodal fusion engines.
 Input fusion engines combine and interpret data from multiple input modalities in a parallel or sequential way.
 With \mbox{I-SEARCH}, we present a search engine that captures modalities sequentially, however, processes them in parallel.
