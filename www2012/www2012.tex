@@ -70,59 +70,59 @@ framexbottommargin=-1em,
 
 \title{I-SEARCH -- A Multimodal Search Engine based on\\*Rich Unified Content Description (RUCoD)}
 
-\numberofauthors{11}
+\numberofauthors{6}
 \author{
 \alignauthor
-Thomas Steiner\\
+\textbf{Thomas Steiner}\\
 	\affaddr{Google Germany GmbH}\\
-	\affaddr{ABC-Str. 19}\\
-	\affaddr{20354 Hamburg, Germany}\\
-	\email{tomac@google.com}
+	\affaddr{tomac@google.com}
 \alignauthor
-Jonas Etzold\\
-	\affaddr{Fulda University of Applied Sciences}\\
-	\affaddr{Marquardstr. 35}\\
-	\affaddr{36039 Fulda, Germany}\\
-	\email{jonas.etzold@informatik.hs-fulda.de}
+\textbf{Lorenzo Sutton}\\
+	\affaddr{ANSC Rome}\\
+	\affaddr{l.sutton@santacecilia.it}
 \alignauthor
-Paul Grimm\\	
-	\affaddr{Fulda University of Applied Sciences}\\
-	\affaddr{Marquardstr. 35}\\
-	\affaddr{36039 Fulda, Germany}\\
-	\email{paul.grimm@hs-fulda.de}
+\textbf{Sabine Spiller}\\ 	
+	\affaddr{EasternGraphics GmbH}\\
+	\affaddr{sabine.spiller@easterngraphics.com}
+\and	
+\alignauthor	
+\textbf{Francesco Nucci,\\*Vincenzo Croce}\\ 	
+	\affaddr{Engineering}\\
+	\affaddr{\{francesco.nucci, vincenzo.croce\}@eng.it}
+\alignauthor
+\textbf{Alberto Massari,\\*Antonio Camurri}\\
+	\affaddr{University of Genova}\\
+	\affaddr{alby@infomus.dist.unige.it, fantonio.camurri@unige.it}  
+\alignauthor	
+\textbf{Anne Verroust-Blondet,\\*Laurent Joyeux}\\
+	\affaddr{INRIA Paris}\\
+	\affaddr{\{anne.verroust, laurent.joyeux\}@inria.fr}
 \and
 \alignauthor
-Lorenzo Sutton\\
-	\affaddr{Accademia Nazionale di}\\
-	\affaddr{Santa Cecilia -- Fondazione}\\
-	\affaddr{00196 Roma, Italy}\\
-	\email{l.sutton@santacecilia.it}
-\alignauthor	
-Francesco Nucci\\
-	\affaddr{ENG}
+\textbf{Jonas Etzold,\\*Paul Grimm}\\
+	\affaddr{Hochschule Fulda}\\
+	\affaddr{\{jonas.etzold, paul.grimm\}@hs-fulda.de}
 \alignauthor
-Vincenzo Croce\\
-	\affaddr{ENG}
+\textbf{Thanassis Mademlis, Sotiris Malassiotis, Petros Daras}\\
+	\affaddr{CERTH/ITI}\\  
+  	\affaddr{\{mademlis, malasiot, daras\}@iti.gr}
+\alignauthor
+\textbf{Apostolos Axenopoulos,\\*Dimitrios Tzovaras}\\
+	\affaddr{CERTH/ITI}\\  
+	\affaddr{\{axenop, tzovaras\}@iti.gr}
 }
 
-\additionalauthors{Additional authors: 
-  Thanassis Mademlis (ITI),
-  Alberto Massari (UNIGE),
-  Petros Daras (ITI),
-  Apostolos Axenopoulos (ITI),
-  Antonio Camurri (UNIGE), and
-  Dimitrios Tzovaras (ITI)
-}
 \maketitle
 
 \begin{abstract}
-
+In this paper, we report on work around the \mbox{I-SEARCH} project whose objective is the development of a multimodal search engine.
+We present the project's objectives, and provide more details on the achieved results, amongst which a new Rich Unified Content Dexcription format. 
 \end{abstract}
 
 \category{H.3.4}{Information Systems}{Information Storage and Retrieval}[World Wide Web]
 \category{H.3.5}{Online Information Services}{Web-based services}
 
-\keywords{Multimodality, Rich Unified Content Description, search engine}
+\keywords{Multimodality, Rich Unified Content Description, IR}
 
 \section{Introduction}
 \subsection{Motivation}
@@ -132,11 +132,17 @@ In a certain sense the search process has been revolutionized on mobile devices 
 Support for the human voice as an input modality is mainly driven by shortcomings of (mobile) keyboards.
 One modality, text, is simply replaced by another, voice.
 However, what is still missing is a truly multimodal search engine.
-If the searched-for item is slow, sad, minor scale piano music\footnote{Sad, slow piano music: \url{http://youtu.be/a_Am4cHMBKM}}, the best input modalities might be to just upload a short sample (``audio'') and an unhappy smiley face (``emotion'').
-When searching for the sound of Times Square, New York\footnote{Sound of Times Square: \url{http://youtu.be/_ttz9QDj0cw}}, the best input modalities might be the coordinates (``geolocation'') of Times Square and a photo of a yellow cab (``image'').
-Finally, when searching for a Greek-looking font\footnote{Greek-looking font: \url{http://www.dafont.com/cleopatra.font}}, the best input modality might be to just scribble some letters in the desired style (``sketch'').
+If the searched-for item is slow, sad, minor scale piano music,
+% \footnote{Sad, slow piano music: \url{http://youtu.be/a_Am4cHMBKM}}
+the best input modalities might be to just upload a short sample (``audio'') and an unhappy smiley face (``emotion'').
+When searching for the sound of Times Square, New York,
+% \footnote{Sound of Times Square: \url{http://youtu.be/_ttz9QDj0cw}}
+the best input modalities might be the coordinates (``geolocation'') of Times Square and a photo of a yellow cab (``image'').
+Finally, when searching for a Greek-like font,
+% \footnote{Greek-like font: \url{http://www.dafont.com/dalek.font}}
+the best input modality might be to just scribble some letters in the desired style (``sketch'').
 The outlined search scenarios are of very different nature, and even for human beings it is not easy to find \emph{the} correct answer, let alone that such answer exists for each scenario.
-With \mbox{I-SEARCH}, we thus strive for a paradigm shift; away from textual term-based search, towards a more explorative multimodality-driven search experience.
+With \mbox{I-SEARCH}, we thus strive for a paradigm shift; away from textual keyword search, towards a more explorative multimodality-driven search experience.
 
 \subsection{Background}
 It is evident that for the outlined scenarios to work, a significant investment in describing the underlying media items is necessary.
@@ -145,7 +151,7 @@ Content objects are rich media presentations, enclosing different types of media
 \emph{RUCoD} provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
 
 \subsection{Involved Partners and Paper Structure}
-The involved project partners are CERTH/ITI (Greece), JCP-Consult (France), INRIA (France), ATC (Greece), Engineering (Italy), Google (Ireland), UNIGE (Italy), Exalead (France), FH Fulda (Germany), ANSC (Italy), and EasternGraphics (Germany).
+The involved partners are CERTH/ITI (Greece), JCP-Consult (France), INRIA (France), ATC (Greece), Engineering (Italy), Google (Ireland), UNIGE (Italy), Exalead (France), FH Fulda (Germany), ANSC (Italy), and EasternGraphics (Germany).
 In this paper, we give an overview on the \mbox{I-SEARCH} project so far.
 In \autoref{sec:projectgoals}, we outline the general objectives of  \mbox{I-SEARCH}.
 \autoref{sec:projectresults} highlights significant achievements.
@@ -163,10 +169,38 @@ Through the increasing availability of location-aware capture devices such as di
 
 \section{Project Results} \label{sec:projectresults}
 
-\subsection{Rich Unified Content Description (RUCoD)}
+\subsection{Rich Unified Content Description}
 In order to describe content objects consistently, a \emph{Rich Unified Content Description (RUCoD)} format was developed.
 The format is specified in form of XML schemas and available on the project website\footnote{\emph{RUCoD} XML schemas: \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd} and \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}.}.
 The description format has been introduced in full detail in~\cite{ijmis2010}, \autoref{lst:rucod} illustrates \emph{RUCoD} with an example.
+
+\subsection{Graphical User Interface}
+The \mbox{I-SEARCH} graphical user interface (GUI) is implemented with the objective of sharing one common code base for all possible input devices (Subfigure~\ref{fig:devices} shows mobile devices of different screen sizes and operating systems).
+It uses a JavaScript-based component called \emph{UIIFace}~\cite{mmm2012}, which enables the user to interact with \mbox{I-SEARCH} via a wide range of modern input modalities like touch, gestures, or speech.
+The GUI also provides a WebSocket-based collaborative search tool called \emph{CoFind}~\cite{mmm2012} that enables users to search collaboratively via a shared results basket, and to exchange messages throughout the search process.
+A third component called \emph{pTag}~\cite{mmm2012} produces personalized tag recommendations to create, tag, and filter search queries and results.
+\begin{figure}
+  \centering
+    \subfloat[][Multimodal query consisting of \emph{geolocation}, \emph{video}, \emph{emotion}, and \emph{sketch} (in progress).]{
+      \includegraphics[width=0.72\columnwidth]{./resources/isearch.jpg}
+      \label{fig:isearch}}
+    \qquad
+    \subfloat[][Running on some mobile devices with different screen sizes and operating systems.]{
+      \includegraphics[width=0.72\columnwidth]{./resources/devices.jpg}
+      \label{fig:devices}}
+    \qquad
+    \subfloat[][Treemap results visualization showing different clusters of images.]{
+      \includegraphics[width=0.72\columnwidth]{./resources/treemap.pdf}
+      \label{fig:treemap}}      
+\caption{\mbox{I-SEARCH} graphical user interface.}
+\label{fig:gui}
+\end{figure}
+
+\subsection{Video and Image}
+The video mining component produces a video summary as a set of recurrent image patches to give a visual representation of the video to the user.
+These patches can be used to refine search and/or to navigate more easily in videos or images.
+For this purpose, we use a technique of Letessier \textit{et al.}~\cite{Letessier11} consisting of a weighted and adaptive sampling strategy aiming to select the most relevant query regions from a set of images.
+The images are the video key frames and a new clustering method is introduced that returns a set of suggested object-based visual queries. The image search component performs approximate vector search on either local or global image descriptors to speed up response time on large scale databases.
 
 \begin{lstlisting}[caption=Sample \emph{RUCoD} snippet (namespace declarations and some details removed for legibility reasons).,label={lst:rucod}]
 <RUCoD>
@@ -183,9 +217,6 @@ The description format has been introduced in full detail in~\cite{ijmis2010}, \
       <Creator>
         <Name>CoFetch Script</Name>
       </Creator>
-      <Contributor>
-        <Name>Google</Name>
-      </Contributor>
     </ContentObjectCreationInformation>
     <Tags>
       <MetaTag name="UserTag" type="xsd:string">
@@ -229,45 +260,12 @@ The description format has been introduced in full detail in~\cite{ijmis2010}, \
 </RUCoD>
 \end{lstlisting}
 
-\subsection{Graphical User Interface}
-The \mbox{I-SEARCH} graphical user interface (GUI) is implemented in pure HTML5, JavaScript, and Cascading Style Sheets (CSS), the main objective being to share one common code base for all possible input devices (Subfigure~\ref{fig:devices} shows mobile devices of different screen sizes and operating systems).
-At its core, the GUI consists of a Web application that dynamically adapts itself to the particular device, be it mobile, or desktop.
-
-\begin{figure}
-  \centering
-    \subfloat[][Multimodal query consisting of \emph{geolocation}, \emph{video}, \emph{emotion}, and \emph{sketch} (in progress).]{
-      \includegraphics[width=0.65\columnwidth]{./resources/isearch.jpg}
-      \label{fig:isearch}}
-    \qquad
-    \subfloat[][Running on some mobile devices with different screen sizes and operating systems.]{
-      \includegraphics[width=0.65\columnwidth]{./resources/devices.jpg}
-      \label{fig:devices}}
-    \qquad
-    \subfloat[][Treemap results visualization showing different clusters of images.]{
-      \includegraphics[width=0.65\columnwidth]{./resources/treemap.pdf}
-      \label{fig:treemap}}      
-\caption{\mbox{I-SEARCH} graphical user interface.}
-\label{fig:gui}
-\end{figure}
-
-The GUI utilizes a JavaScript-based component called \emph{UIIFace}~\cite{mmm2012}, which enables the user to interact with \mbox{I-SEARCH} in a multimodal manner via a wide range of modern input modalities like touch, touch-less gestures, or speech; always depending on the users' needs and device capabilities.
-Further the GUI provides a WebSocket-based collaborative search tool called \emph{CoFind}~\cite{mmm2012} that enables users to search collaboratively and receive results in a shared results basket, and to exchange messages throughout the search process.
-A third component called \emph{pTag}~\cite{mmm2012} produces personalized tag recommendations to create and filter search queries, and creates suggestions to tag certain result items.
-
-\subsection{Video and Image}
-The video mining component aims to produce a video summary as a set of recurrent image patches to give a visual representation of the video to the user.
-These patches can be used to refine search and/or to navigate more easily in videos or images.
-For this purpose, we use a technique of Letessier \textit{et al.}~\cite{Letessier11} consisting of a weighted and adaptive sampling strategy aiming to select the most relevant query regions from a set of images.
-The images are the video key frames and a new clustering method is introduced that returns a set of suggested object-based visual queries.
-
-The image search component performs approximate vector search on either local or global image descriptors to speed up response time on large scale databases.
-
-\subsection{Audio}
-Innovations proposed in \mbox{I-SEARCH} include (i), the extraction of expressive and emotional information conveyed by a user to build a query, and (ii), the possibility to build queries resulting from a social verbal or non-verbal interaction among a group of users.
-The I-SEARCH platform includes real-time algorithms for the analysis of non-verbal emotional behavior expressed by full body gestures, algorithms for the analysis of the social behavior in a group of users, and  methods to extract data from sensors for accessing real-world information.
+\subsection{Audio and Emotions}
+\mbox{I-SEARCH} includes the extraction of expressive and emotional information conveyed by a user to build a query, and the possibility to build queries resulting from a social verbal or non-verbal interaction among a group of users.
+The I-SEARCH platform includes algorithms for the analysis of non-verbal emotional behavior expressed by full body gestures, for the analysis of the social behavior in a group of users, and  methods to extract real-world data.
 
 \subsection{3D Objects}
-The 3D object descriptor extractor is the component in charge of extracting low level features from 3D objects and is invoked during the content analytics process.
+The 3D object descriptor extractor is the component for extracting low level features from 3D objects and is invoked during the content analytics process.
 More specifically, it takes as input a 3D object and returns a fragment of low level descriptors fully compliant with the \emph{RUCoD} format.
 
 \subsection{Visualization}
@@ -295,27 +293,27 @@ Supported input modalities at this point are \emph{audio}, \emph{video}, \emph{r
 For \emph{emotion}, an innovative emotion slider open source solution~\cite{emotionslider} was adapted to our needs.
 The GUI supports \textit{drag and drop} user interactions and we aim for supporting low level device access for audio and video uploads.
 For \emph{3D objects}, we support Web GL powered 3D views of models.
-\emph{Text} can be entered via speech input based on the WAMI toolkit~\cite{wami}, or typed in via the keyboard.
+\emph{Text} can be entered via speech input based on the WAMI toolkit~\cite{wami}, or via keyboard.
+First results can be seen upon submitting a query, and the visualization component allows to switch back and forth between different views.
 
 \section{Related Work} \label{sec:relatedwork}
 We start covering related work with a differentiation of terms.
 \emph{Multimodal search} can be used in two senses; (i), in the sense of multimodal result output based on unimodal query input, and (ii), in the sense of both multimodal result output and multimodal query input.
 We follow the second definition, i.e., require the query input interface to allow for multimodality.
-We do not consider the first definition, as common search engines today already by default return multimodal results.
+We do not consider the first definition, as common search engines already by default return multimodal results.
 
-An interesting multimodal search engine was developed in the scope of the PHAROS European project~\cite{pharos2009}.
+An interesting multimodal search engine was developed in the scope of the PHAROS project~\cite{pharos2009}.
 While the initial query is still keyword-based, the search engine allows for refinements in form of facets, like location, that can be considered modalities.
-\mbox{I-SEARCH} develops this concept one step further by supporting multimodality from the beginning.In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
+\mbox{I-SEARCH} develops this concept one step further by supporting multimodality from the beginning.
+In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
 Consumers can navigate on-device portals by searching with text, voice, and camera images.
-Rahn Frederick's article is relevant to \mbox{I-SEARCH}, as it is specifically focused on mobile devices, albeit the scope of our project is further in the sense of also covering desktop devices. 
-
+Rahn Frederick's article is relevant, as it is specifically focused on mobile devices, albeit the scope of \mbox{I-SEARCH} is broader in the sense of also covering desktop devices. 
 In a W3C Note~\cite{w3cmultimodal2003}, Larson \textit{et al.} describe a multimodal interaction framework, and identify the major components for multimodal systems.
 The multimodal interaction framework is not an architecture \textit{per se}, but rather a level of abstraction above an architecture and identifies the markup languages used to describe information required by components and for data flows among components.
-
 With Mudra~\cite{mudra2011}, Hoste \textit{et al.} present a unified multimodal interaction framework supporting the integrated processing of low level data streams as well as high level semantic inferences.
 Their architecture is designed to support a growing set of input modalities as well as to enable the integration of existing or novel multimodal fusion engines.
 Input fusion engines combine and interpret data from multiple input modalities in a parallel or sequential way.
-With \mbox{I-SEARCH}, we present a search engine that captures modalities sequentially, however, processes them in parallel.
+\mbox{I-SEARCH} is a search engine that captures modalities sequentially, however, processes them in parallel.
 
 \section{Future Work and Conclusion} \label{sec:futureworkconclusion}
 The efforts in the coming months will focus on integrating the different components.
@@ -325,7 +323,6 @@ We will evaluate those use cases and test the results in user studies involving 
 
 In this paper, we have introduced and motivated the \mbox{I-SEARCH} project and have shown the involved components from the different project partners.
 We have then presented first results, provided a system demonstration, and positioned our project in relation to related work in the field.
-
 \mbox{I-SEARCH} is now in a decisive phase of the project, where the components function in isolation, however, need to be integrated in order to work well in orchestration with the entire \mbox{I-SEARCH} framework.
 The coming months will be fully dedicated to the integration efforts and we are optimistic to successfully evaluate the set of use cases in the project's final year.
 
