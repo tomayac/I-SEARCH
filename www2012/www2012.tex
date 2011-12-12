@@ -78,7 +78,7 @@ framexbottommargin=-1em,
 	\affaddr{tomac@google.com}
 \alignauthor
 \textbf{Lorenzo Sutton}\\
-	\affaddr{ANSC Rome}\\
+	\affaddr{Accademia Naz. di S. Cecilia}\\
 	\affaddr{l.sutton@santacecilia.it}
 \alignauthor
 \textbf{Sabine Spiller}\\ 	
@@ -86,16 +86,16 @@ framexbottommargin=-1em,
 	\affaddr{sabine.spiller@easterngraphics.com}
 \and	
 \alignauthor	
-\textbf{Francesco Nucci,\\*Vincenzo Croce}\\ 	
+\textbf{Marilena Lazzaro,\\*Francesco Nucci,\\*Vincenzo Croce}\\
 	\affaddr{Engineering}\\
-	\affaddr{\{francesco.nucci, vincenzo.croce\}@eng.it}
+	\affaddr{\{firstname.lastname\}@eng.it}
 \alignauthor
 \textbf{Alberto Massari,\\*Antonio Camurri}\\
 	\affaddr{University of Genova}\\
 	\affaddr{alby@infomus.dist.unige.it, antonio.camurri@unige.it}  
 \alignauthor	
 \textbf{Anne Verroust-Blondet,\\*Laurent Joyeux}\\
-	\affaddr{INRIA Paris}\\
+	\affaddr{INRIA Rocquencourt}\\
 	\affaddr{\{anne.verroust, laurent.joyeux\}@inria.fr}
 \and
 \alignauthor
@@ -103,7 +103,7 @@ framexbottommargin=-1em,
 	\affaddr{Hochschule Fulda}\\
 	\affaddr{\{jonas.etzold, paul.grimm\}@hs-fulda.de}
 \alignauthor
-\textbf{Thanassis Mademlis, Sotiris Malassiotis, Petros Daras}\\
+\textbf{Athanasios Mademlis, Sotiris Malassiotis, Petros Daras}\\
 	\affaddr{CERTH/ITI}\\  
   	\affaddr{\{mademlis, malasiot, daras\}@iti.gr}
 \alignauthor
@@ -115,8 +115,8 @@ framexbottommargin=-1em,
 \maketitle
 
 \begin{abstract}
-In this paper, we report on work around the \mbox{I-SEARCH} project whose objective is the development of a multimodal search engine.
-We present the project's objectives, and provide more details on the achieved results, amongst which a new Rich Unified Content Dexcription format. 
+In this paper, we report on work around the \mbox{I-SEARCH} EU (FP7 ICT STREP) project whose objective is the development of a multimodal search engine.
+We present the project's objectives, and detail the achieved results, amongst which a Rich Unified Content Description format. 
 \end{abstract}
 
 \category{H.3.4}{Information Systems}{Information Storage and Retrieval}[World Wide Web]
@@ -134,45 +134,46 @@ One modality, text, is simply replaced by another, voice.
 However, what is still missing is a truly multimodal search engine.
 If the searched-for item is slow, sad, minor scale piano music,
 % \footnote{Sad, slow piano music: \url{http://youtu.be/a_Am4cHMBKM}}
-the best input modalities might be to just upload a short sample (``audio'') and an unhappy smiley face (``emotion'').
+the best input modalities might be to just upload a short
+sample (``audio'') and an unhappy smiley face or a sad body expressive gesture (``emotion'').
 When searching for the sound of Times Square, New York,
 % \footnote{Sound of Times Square: \url{http://youtu.be/_ttz9QDj0cw}}
 the best input modalities might be the coordinates (``geolocation'') of Times Square and a photo of a yellow cab (``image'').
-Finally, when searching for a Greek-like font,
+%Finally, when searching for a Greek-like font,
 % \footnote{Greek-like font: \url{http://www.dafont.com/dalek.font}}
-the best input modality might be to just scribble some letters in the desired style (``sketch'').
+%the best input modality might be to just scribble some letters in the desired style (``sketch'').
 The outlined search scenarios are of very different nature, and even for human beings it is not easy to find \emph{the} correct answer, let alone that such answer exists for each scenario.
 With \mbox{I-SEARCH}, we thus strive for a paradigm shift; away from textual keyword search, towards a more explorative multimodality-driven search experience.
 
 \subsection{Background}
 It is evident that for the outlined scenarios to work, a significant investment in describing the underlying media items is necessary.
-Therefore, in~\cite{ijmis2010}, we have first introduced the concept of so-called \emph{content objects}, and second, a description format named \emph{Rich Unified Content Description (RUCoD)}.
+Therefore, in~\cite{ijmis2010}, we have first introduced the concept of so-called \emph{content objects}, and second, a description format named \emph{Rich Unified Content Description \mbox{(RUCoD)}}.
 Content objects are rich media presentations, enclosing different types of media, along with real-world information and user-related information.
-\emph{RUCoD} provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
+\mbox{\emph{RUCoD}} provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
 
 \subsection{Involved Partners and Paper Structure}
-The involved partners are CERTH/ITI (Greece), JCP-Consult (France), INRIA (France), ATC (Greece), Engineering (Italy), Google (Ireland), UNIGE (Italy), Exalead (France), FH Fulda (Germany), ANSC (Italy), and EasternGraphics (Germany).
+The involved partners are CERTH/ITI (Greece), JCP-Consult (France), INRIA Rocquencourt (France), ATC (Greece), Engineering (Italy), Google (Ireland), University of Genoa (Italy), Exalead (France), FH Fulda (Germany), Accademia Nazionale di Santa Cecilia (Italy), and EasternGraphics (Germany).
 In this paper, we give an overview on the \mbox{I-SEARCH} project so far.
 In \autoref{sec:projectgoals}, we outline the general objectives of  \mbox{I-SEARCH}.
 \autoref{sec:projectresults} highlights significant achievements.
 We describe the details of our system in \autoref{sec:systemdemonstration}.
 Relevant related work is shown in \autoref{sec:relatedwork}.
-We give an outlook on future work and close with a conclusion in \autoref{sec:futureworkconclusion}.
+We conclude with an outlook on future work and perspectives of this EU project.
 
 \section{Project Goals} \label{sec:projectgoals}
 With the \mbox{I-SEARCH} project, we aim for the creation of a multimodal search engine that allows for both multimodal in- and output.
-Supported input modalities are \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{geolocation}, and \emph{text}.
+Supported input modalities are \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{social signals}, \emph{geolocation}, and \emph{text}.
 Each modality can be combined with all other modalities.
 The graphical user interface (GUI) of \mbox{I-SEARCH} is not tied to a specific class of devices, but rather dynamically adapts to the particular device constraints like varying screen sizes of desktop and mobile devices like cell phones and tablets.
-An important part of \mbox{I-SEARCH} is a \emph{Rich Unified Content Description (RUCoD)} format that consists of a multi-layered structure that describes low and high level features of content and hence allows this content to be searched in a consistent way by querying \emph{RUCoD} features.
-Through the increasing availability of location-aware capture devices such as digital cameras with GPS receivers, produced content contains exploitable real-world information that form part of \emph{RUCoD} descriptions.
+An important part of \mbox{I-SEARCH} is a \emph{Rich Unified Content Description \mbox{(RUCoD)}} format that consists of a multi-layered structure that describes low and high level features of content and hence allows this content to be searched in a consistent way by querying \mbox{\emph{RUCoD}} features.
+Through the increasing availability of location-aware capture devices such as digital cameras with GPS receivers, produced content contains exploitable real-world information that form part of \mbox{\emph{RUCoD}} descriptions.
 
 \section{Project Results} \label{sec:projectresults}
 
 \subsection{Rich Unified Content Description}
-In order to describe content objects consistently, a \emph{Rich Unified Content Description (RUCoD)} format was developed.
-The format is specified in form of XML schemas and available on the project website\footnote{\emph{RUCoD} XML schemas: \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd} and \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}.}.
-The description format has been introduced in full detail in~\cite{ijmis2010}, \autoref{lst:rucod} illustrates \emph{RUCoD} with an example.
+In order to describe content objects consistently, a \emph{Rich Unified Content Description \mbox{(RUCoD)}} format was developed.
+The format is specified in form of XML schemas and available on the project website\footnote{\mbox{\emph{RUCoD}} XML schemas: \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD_Descriptors.xsd} and \url{http://www.isearch-project.eu/isearch/RUCoD/RUCoD.xsd}.}.
+The description format has been introduced in full detail in~\cite{ijmis2010}, \autoref{lst:rucod} illustrates \mbox{\emph{RUCoD}} with an example.
 
 \subsection{Graphical User Interface}
 The \mbox{I-SEARCH} graphical user interface (GUI) is implemented with the objective of sharing one common code base for all possible input devices (Subfigure~\ref{fig:devices} shows mobile devices of different screen sizes and operating systems).
@@ -202,7 +203,7 @@ These patches can be used to refine search and/or to navigate more easily in vid
 For this purpose, we use a technique of Letessier \textit{et al.}~\cite{Letessier11} consisting of a weighted and adaptive sampling strategy aiming to select the most relevant query regions from a set of images.
 The images are the video key frames and a new clustering method is introduced that returns a set of suggested object-based visual queries. The image search component performs approximate vector search on either local or global image descriptors to speed up response time on large scale databases.
 
-\begin{lstlisting}[caption=Sample \emph{RUCoD} snippet (namespace declarations and some details removed for legibility reasons).,label={lst:rucod}]
+\begin{lstlisting}[caption=Sample \mbox{\emph{RUCoD}} snippet (namespace declarations and some details removed for legibility reasons).,label={lst:rucod}]
 <RUCoD>
   <Header>
     <ContentObjectType>
@@ -225,9 +226,7 @@ The images are the video key frames and a new clustering method is introduced th
     </Tags>
     <ContentObjectTypes>
       <MultimediaContent type="Object3d">
-        <FreeText>
-          This is not Mirza's model.
-        </FreeText>
+        <FreeText>Not Mirza's model.</FreeText>
         <MediaName>2001 Hummer H1</MediaName>
         <MetaTag name="UserTag" type="xsd:string">
           Hummer
@@ -262,11 +261,11 @@ The images are the video key frames and a new clustering method is introduced th
 
 \subsection{Audio and Emotions}
 \mbox{I-SEARCH} includes the extraction of expressive and emotional information conveyed by a user to build a query, and the possibility to build queries resulting from a social verbal or non-verbal interaction among a group of users.
-The I-SEARCH platform includes algorithms for the analysis of non-verbal emotional behavior expressed by full body gestures, for the analysis of the social behavior in a group of users, and  methods to extract real-world data.
+The \mbox{I-SEARCH} platform includes algorithms for the analysis of non-verbal expressive and emotional behavior expressed by full body gestures, for the analysis of the social behavior in a group of users (e.g., synchronization, leadership), and methods to extract real-world data.
 
 \subsection{3D Objects}
 The 3D object descriptor extractor is the component for extracting low level features from 3D objects and is invoked during the content analytics process.
-More specifically, it takes as input a 3D object and returns a fragment of low level descriptors fully compliant with the \emph{RUCoD} format.
+More specifically, it takes as input a 3D object and returns a fragment of low level descriptors fully compliant with the \mbox{\emph{RUCoD}} format.
 
 \subsection{Visualization}
 \mbox{I-SEARCH} uses sophisticated information visualization techniques that support not only querying information, but also browsing techniques for effectively locating relevant information.
@@ -275,15 +274,15 @@ This additional information is subsequently used to present the results to the u
 The visualization interface is able to seamlessly mix results from multiple modalities
  
 \subsection{Orchestration}
-One project partner is involved in the orchestration of the particular components of the other partners.
-In this context, a so-called \emph{Content Analytics Controller (CAC)} has been developed, which is the component in charge of orchestrating the content analytics process for content object enrichment via low level description extraction.
-As a second component, a \emph{RUCoD} authoring tool was built.
+Content enrichment is an articulated process requiring the orchestration of different workflow fragments.
+In this context, a so-called \emph{Content Analytics Controller (CAC)} was developed, which is the component in charge of orchestrating the content analytics process for content object enrichment via low level description extraction.
+Orchestration relies on content object media and related info, handled by a \mbox{\emph{RUCoD}} authoring tool.
 
 \subsection{Content Providers}
 The first content provider in the \mbox{I-SEARCH} projects holds an important Italian ethnomusicology archive.
 The partner makes available all of its digital content to the project as well as its expertise for the development of requirements and use cases related to music.
-The second content provider is an office furniture dealer with a big catalogue of individually customizable pieces of furniture. 
-Both partners are also actively involved in user testing and the overall content collection effort for the project via deployed Web services that return their results in the \emph{RUCoD} format.
+The second content provider is a software vendor for the furniture industry with a big catalogue of individually customizable pieces of furniture. 
+Both partners are also actively involved in user testing and the overall content collection effort for the project via deployed Web services that return their results in the \mbox{\emph{RUCoD}} format.
 
 \section{System Demonstration} \label{sec:systemdemonstration}
 With \mbox{I-SEARCH} being in its second year, there is now some basic functionality in place.
@@ -298,12 +297,12 @@ First results can be seen upon submitting a query, and the visualization compone
 
 \section{Related Work} \label{sec:relatedwork}
 We start covering related work with a differentiation of terms.
-\emph{Multimodal search} can be used in two senses; (i), in the sense of multimodal result output based on unimodal query input, and (ii), in the sense of both multimodal result output and multimodal query input.
+\emph{Multimodal search} can be used in two senses; (i), in the sense of multimodal result output based on unimodal query input, and (ii), in the sense of multimodal result output \emph{and} multimodal query input.
 We follow the second definition, i.e., require the query input interface to allow for multimodality.
-We do not consider the first definition, as common search engines already by default return multimodal results.
+% We do not consider the first definition, as common search engines already by default return multimodal results.
 
 An interesting multimodal search engine was developed in the scope of the PHAROS project~\cite{pharos2009}.
-While the initial query is still keyword-based, the search engine allows for refinements in form of facets, like location, that can be considered modalities.
+With the initial query being keyword-based, content-based or a combination of these, the search engine allows for refinement in form of facets, like location, that can be considered modalities.
 \mbox{I-SEARCH} develops this concept one step further by supporting multimodality from the beginning.
 In~\cite{multimodalitysun}, Rahn Frederick discusses the importance of multimodality in search-driven on-device portals, i.e., handset-resident mobile applications, often preloaded, that enhance the discovery and consumption of endorsed mobile content, services, and applications.
 Consumers can navigate on-device portals by searching with text, voice, and camera images.
