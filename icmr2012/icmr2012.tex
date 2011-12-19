@@ -124,9 +124,9 @@ framexbottommargin=-1em,
 
 \begin{abstract}
 In this paper, we report on work around the \mbox{I-SEARCH} EU (FP7 ICT STREP) project whose objective is the development of a multimodal search engine targeted at both mobile and desktop devices.
-Each of those device classes has its specific hardware capabilities and set of supported features.
+Each of these device classes has its specific hardware capabilities and set of supported features.
 In order to provide a common multimodal search experience across devices, one size does not fit all.
-We highlight different ways to achieve the same functionality agnostic of the device being used for the search operation, and, via concrete use cases defined within the scope of the project, evaluate our approach.
+We highlight ways to achieve the same functionality agnostic of the device being used for the search, and, via concrete use cases defined within the scope of the project, evaluate our approach.
 \end{abstract}
 
 \category{H.3.4}{Information Systems}{Information Storage and Retrieval}[World Wide Web]
@@ -137,23 +137,46 @@ We highlight different ways to achieve the same functionality agnostic of the de
 \section{Introduction} \label{sec:introduction}
 Even in 2012, search is a mainly text-driven operation.
 Albeit recent developments in the two worlds, mobile and desktop, have introduced voice search as an additional input modality, a truly multimodal search experience is still missing.
-In the scope of \mbox{I-SEARCH}, a broad range of both industrial and academic partners with different main research areas, are jointly working together to investigate ways to provide such a multimodal search experience across devices.
-An important step towards multimodal search was the creation of a unified annotation format named \emph{Rich Unified Content Description (RUCoD)}, which is detailed in~\cite{ijmis2010}.
-We provide an overall view of the project in~\cite{www2012}.
-In this paper, we focus on how we already have addressed, or how we plan to deal with device constraints for supporting the input modalities \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{social signals}, \emph{geolocation}, and \emph{text}.
+In the scope of \mbox{I-SEARCH}, a broad range of industrial and academic partners are working together to investigate ways to provide such a multimodal search experience across devices.
+An important step in the project towards multimodal search was the creation of a unified annotation format named \emph{Rich Unified Content Description (RUCoD)}, which is detailed in~\cite{ijmis2010}.
+We provide an overview of the project in~\cite{www2012}.
+In this paper, we focus on taken actions and future plans to deal with device constraints to support the in- and output modalities \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{social signals}, \emph{geolocation}, and \emph{text}.
+\mbox{I-SEARCH} is in its second year and some basic functionality is in place.
+We maintain a bleeding-edge demonstration server\footnote{Demonstration: \url{http://isearch.ai.fh-erfurt.de/}}, and have recorded a screencast\footnote{Screencast: \url{http://youtu.be/-chzjEDcMXU}} that shows some of the interaction patterns.
 
 \section{Use Cases} \label{sec:usecases}
-In this Section, we introduce \todo{number} use cases as defined by the \mbox{I-SEARCH} project.
+In this Section, we introduce three use cases and their in- and output modalities as defined by the \mbox{I-SEARCH} project.
 
-\subsection{Music Retrieval}
+\subsection{Music Expert}
 A music expert with access to a music archive does research on the influence of traditional folk music on today's popular music.
 She inputs a \emph{rhythm} to the \mbox{I-SEARCH} system in order to search the archive for similar rhythm patterns.
 She refines her query by adding \emph{geolocation} to limit results to a certain region and by uploading an image from a nightclub.
 
-\subsection{Virtual Reality}
+\subsection{Interior Designer}
 An interior designer wants to give her client a realistic impression of available office chairs.
 She uploads a \emph{3D model} of a chair that almost matches her client's expectations to the \mbox{I-SEARCH} system, together with an \emph{image} of the desired upholstery.
-She uses a hand-drawn \emph{sketch} as a refinement.
+She uses a hand-drawn \emph{sketch} of the chair's shape as a refinement.
+
+\subsection{World Traveler}
+A world traveler uses her cell phone with the \mbox{I-SEARCH} application installed to create \emph{geolocated} media content like \emph{videos} and \emph{images} of the sights she walks by to retrieve related media content of others, \emph{text} descriptions, and \emph{3D models} she wants to use to map her trip on a virtual globe.
+
+\section{Modalities Across Devices}
+In this Section, we focus on \emph{input} modalities across \emph{mobile} and \emph{desktop} devices and how we support them in \mbox{I-SEARCH}.
+
+\subsection{Audio}
+\subsection{Video}
+\subsection{Rhythm}
+\subsection{Image}
+\subsection{3D Object}
+\subsection{Sketch}
+\subsection{Emotion}
+In order to accompany a query by basic emotional feedback, we have adapted an open-source emotion input solution~\cite{emotionslider} for mobile and desktop that transfers the slider user interface pattern to emotions with a value range from sad to happy. 
+
+\subsection{Social Signals}
+\subsection{Geolocation}
+For retrieving and tracking a user's physical location, we use the HTML5 geolocation API~\cite{geolocation}, which is available in Web browsers on mobile and desktop devices in a consistent way.
+
+\subsection{Text}
 
 \section{Future Work and Conclusion}
 
