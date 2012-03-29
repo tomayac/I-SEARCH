@@ -1,4 +1,5 @@
-\documentclass{acm_proc_article-sp}
+%\documentclass{acm_proc_article-sp}
+\documentclass{www2012-comp-accepted}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -67,6 +68,8 @@ framexbottommargin=-1em,
 }
 
 \begin{document}
+\clubpenalty=10000 
+\widowpenalty = 10000
 
 \title{I-SEARCH -- A Multimodal Search Engine based on\\*Rich Unified Content Description (RUCoD)}
 
@@ -127,7 +130,7 @@ We present the project's objectives, and detail the achieved results, amongst wh
 \section{Introduction}
 \subsection{Motivation}
 Since the beginning of the age of Web search engines in 1990, the search process is associated with a text input field.
-From the first search engine, Archie~\cite{archie}, to state-of-the-art search engines like WolframAlpha~\cite{wolframalpha}, this fundamental input paradigm has not changed.
+From the first search engine, Archie~\cite{archie}, to state-of-the-art search engines like WolframAlpha~\footnote{WolframAlpha: \url{http://www.wolframalpha.com/}}, this fundamental input paradigm has not changed.
 In a certain sense the search process has been revolutionized on mobile devices through the addition of voice input support like Apple's Siri~\cite{siri} for iOS, Google's Voice Actions~\cite{voiceactions} for Android, and through Voice Search~\cite{voicesearch} for desktop computers.
 Support for the human voice as an input modality is mainly driven by shortcomings of (mobile) keyboards.
 One modality, text, is simply replaced by another, voice.
@@ -150,6 +153,10 @@ It is evident that for the outlined scenarios to work, a significant investment 
 Therefore, in~\cite{ijmis2010}, we have first introduced the concept of so-called \emph{content objects}, and second, a description format named \emph{Rich Unified Content Description \mbox{(RUCoD)}}.
 Content objects are rich media presentations, enclosing different types of media, along with real-world information and user-related information.
 \mbox{\emph{RUCoD}} provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
+Due to the enormous processing costs for the description of content objects,
+our approach currently is not yet applicable on Web scale.
+We target ``Company Wide Intraweb'' scale rather than World Wide Web scale environments,
+which, however, we make accessible in a multimodal way from the World Wide Web.
 
 \subsection{Involved Partners and Paper Structure}
 The involved partners are CERTH/ITI (Greece), JCP-Consult (France), INRIA Rocquencourt (France), ATC (Greece), Engineering Ingegneria Informatica S.p.A. (Italy), Google (Ireland), University of Genoa (Italy), Exalead (France), University of Applied Sciences Fulda (Germany), Accademia Nazionale di Santa Cecilia (Italy), and EasternGraphics (Germany).
@@ -212,8 +219,6 @@ The images are the video key frames and a new clustering method is introduced th
     <ContentObjectName xml:lang="en-US">
       AM General Hummer
     </ContentObjectName>
-    <ContentObjectID/>
-    <ContentObjectVersion>1</ContentObjectVersion>
     <ContentObjectCreationInformation>
       <Creator>
         <Name>CoFetch Script</Name>
@@ -275,8 +280,8 @@ The visualization interface is able to seamlessly mix results from multiple moda
  
 \subsection{Orchestration}
 Content enrichment is an articulated process requiring the orchestration of different workflow fragments.
-In this context, a so-called \emph{Content Analytics Controller (CAC)} was developed, which is the component in charge of orchestrating the content analytics process for content object enrichment via low level description extraction.
-Orchestration relies on content object media and related info, handled by a \mbox{\emph{RUCoD}} authoring tool.
+In this context, a so-called \emph{Content Analytics Controller} was developed, which is the component in charge of orchestrating the content analytics process for content object enrichment via low level description extraction.
+It relies on content object media and related info, handled by a \mbox{\emph{RUCoD}} authoring tool.
 
 \subsection{Content Providers}
 The first content provider in the \mbox{I-SEARCH} projects holds an important Italian ethnomusicology archive.
@@ -296,7 +301,6 @@ For \emph{3D objects}, we support Web GL powered 3D views of models.
 First results can be seen upon submitting a query, and the visualization component allows to switch back and forth between different views.
 
 \section{Related Work} \label{sec:relatedwork}
-We start covering related work with a differentiation of terms.
 \emph{Multimodal search} can be used in two senses; (i), in the sense of multimodal result output based on unimodal query input, and (ii), in the sense of multimodal result output \emph{and} multimodal query input.
 We follow the second definition, i.e., require the query input interface to allow for multimodality.
 % We do not consider the first definition, as common search engines already by default return multimodal results.
@@ -322,8 +326,7 @@ We will evaluate those use cases and test the results in user studies involving 
 
 In this paper, we have introduced and motivated the \mbox{I-SEARCH} project and have shown the involved components from the different project partners.
 We have then presented first results, provided a system demonstration, and positioned our project in relation to related work in the field.
-\mbox{I-SEARCH} is now in a decisive phase of the project, where the components function in isolation, however, need to be integrated in order to work well in orchestration with the entire \mbox{I-SEARCH} framework.
-The coming months will be fully dedicated to the integration efforts and we are optimistic to successfully evaluate the set of use cases in the project's final year.
+The coming months will be fully dedicated to the integration efforts of the partners' components and we are optimistic to successfully evaluate the set of use cases in a future paper.
 
 \section{Acknowledgments}
 This work was partially supported by the European Commission under Grant No. 248296 FP7 \mbox{I-SEARCH} project.

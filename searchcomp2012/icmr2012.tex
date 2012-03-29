@@ -1,0 +1,170 @@
+\documentclass{acm_proc_article-sp}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[activate=compatibility]{microtype}
+
+% autoref command
+\usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\subfloatautorefname{Subfigure}
+
+\usepackage[lofdepth,lotdepth]{subfig}
+
+\usepackage{enumitem}
+
+\usepackage{mathtools}
+
+% give emph a normal fontsize
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\oldemph{\fontsize{9}{9}\selectfont #1}}
+
+% more readable footnote layout
+\renewcommand{\footnotesize}{\fontsize{8pt}{10pt}}
+\setlength{\footnotesep}{.5cm}
+
+% todo macro
+\usepackage{color}
+\newcommand{\todo}[1]{\noindent\textcolor{red}{{\bf \{TODO}: #1{\bf \}}}}
+
+% listings and Verbatim environment
+\usepackage{fancyvrb}
+\usepackage{relsize}
+\usepackage{listings}
+\usepackage{verbatim}
+\newcommand{\defaultlistingsize}{\fontsize{8pt}{9.5pt}}
+\newcommand{\inlinelistingsize}{\fontsize{8pt}{11pt}}
+\newcommand{\smalllistingsize}{\fontsize{7.5pt}{9.5pt}}
+\newcommand{\listingsize}{\defaultlistingsize}
+\RecustomVerbatimCommand{\Verb}{Verb}{fontsize=\inlinelistingsize}
+\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\defaultlistingsize}
+\lstset{frame=lines,captionpos=b,numberbychapter=false,escapechar=§,
+        aboveskip=0.5em,belowskip=0em,abovecaptionskip=0em,belowcaptionskip=0em,
+framexbottommargin=-1em,
+        basicstyle=\ttfamily\listingsize\selectfont}
+
+% use Courier from this point onward
+\let\oldttdefault\ttdefault
+\renewcommand{\ttdefault}{pcr}
+\let\oldurl\url
+\renewcommand{\url}[1]{\inlinelistingsize\oldurl{#1}}
+
+% superscript for 1st, 2nd, etc.
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+\newcommand{\th}[0]{\superscript{th}}
+\newcommand{\st}[0]{\superscript{st}}
+\newcommand{\nd}[0]{\superscript{nd}}
+\newcommand{\rd}[0]{\superscript{rd}}
+
+% linewrap symbol
+\definecolor{grey}{RGB}{130,130,130}
+\newcommand{\linewrap}{\raisebox{-.6ex}{\textcolor{grey}{$\hookleftarrow$}}}
+
+% more pleasing quote environment
+\usepackage{tikz}
+\newcommand*{\openquote}{\tikz[remember picture,overlay,xshift=-7pt,yshift=1pt]
+     \node (OQ) {\fontfamily{fxl}\fontsize{16}{16}\selectfont``};\kern0pt}
+\newcommand*{\closequote}{\tikz[remember picture,overlay,xshift=2pt,yshift=-4.5pt]
+     \node (CQ) {\fontfamily{fxl}\fontsize{16}{16}\selectfont''};}
+\renewenvironment{quote}%
+{\setlength{\parindent}{1cm}\par\openquote}
+{\closequote\vspace{-4.5pt}
+}
+
+\begin{document}
+
+\title{\mbox{I-SEARCH} -- Challenges in Multimodal Search}
+
+\numberofauthors{6}
+\author{
+\alignauthor
+\textbf{Thomas Steiner}\\
+	\affaddr{Google Germany GmbH}\\
+	\affaddr{tomac@google.com}
+\alignauthor
+\textbf{Lorenzo Sutton}\\
+	\affaddr{Accademia Naz. di S. Cecilia}\\
+	\affaddr{l.sutton@santacecilia.it}
+\alignauthor
+\textbf{Sabine Spiller}\\ 	
+	\affaddr{EasternGraphics GmbH}\\
+	\affaddr{sabine.spiller@easterngraphics.com}
+\and	
+\alignauthor	
+\textbf{Marilena Lazzaro,\\*Francesco Nucci,\\*Vincenzo Croce}\\
+	\affaddr{Engineering}\\
+	\affaddr{\{firstname.lastname\}@eng.it}
+\alignauthor
+\textbf{Alberto Massari,\\*Antonio Camurri}\\
+	\affaddr{University of Genova}\\
+	\affaddr{alby@infomus.dist.unige.it, antonio.camurri@unige.it}  
+\alignauthor	
+\textbf{Anne Verroust-Blondet,\\*Laurent Joyeux}\\
+	\affaddr{INRIA Rocquencourt}\\
+	\affaddr{\{anne.verroust, laurent.joyeux\}@inria.fr}
+\and
+\alignauthor
+\textbf{Jonas Etzold,\\*Paul Grimm}\\
+	\affaddr{Hochschule Fulda}\\
+	\affaddr{\{jonas.etzold, paul.grimm\}@hs-fulda.de}
+\alignauthor
+\textbf{Athanasios Mademlis, Sotiris Malassiotis, Petros Daras}\\
+	\affaddr{CERTH/ITI}\\  
+  	\affaddr{\{mademlis, malasiot, daras\}@iti.gr}
+\alignauthor
+\textbf{Apostolos Axenopoulos,\\*Dimitrios Tzovaras}\\
+	\affaddr{CERTH/ITI}\\  
+	\affaddr{\{axenop, tzovaras\}@iti.gr}
+}
+
+\maketitle
+
+\section*{Introduction} \label{sec:introduction}
+In this demo, we report on the \mbox{I-SEARCH} EU (FP7 ICT STREP) project whose objective is the development of a~multimodal search engine targeted at mobile and desktop devices
+to allow for a~multimodal search experience across those device classes covering the
+in- and output modalities \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{geolocation}, and \emph{text}.
+Desktop and mobile devices have specific hardware capabilities and sets of supported features,
+hence providing a~common multimodal search experience across device classes is not given.
+We highlight ways to achieve the same functionality agnostic of the device class being used and present some challenges with multimodal search.
+A~demonstration server\footnote{Demonstration: \url{http://isearch.ai.fh-erfurt.de/}} and a~screencast\footnote{Screencast: \url{http://youtu.be/-chzjEDcMXU}} are available.
+
+\section*{Multimodal Search Challenges} \label{sec:projectgoals}
+\mbox{I-SEARCH} is a~complex project that touches on many research areas treated by the different project partners.
+
+\textbf{Text}
+On mobile and desktop, text can be entered using the keyboard or using the speech input API.
+
+\textbf{Graphical User Interface}
+We aim at sharing one common code base for both device classes, mobile and desktop, with the user interface getting progressively enhanced the more capable the user's Web browser and connection speed are.
+Search engines over the years have coined a~common interaction pattern: the search box.
+We enhance this interaction pattern by context-aware modality input toggles that create modality query tokens in the \mbox{I-SEARCH} search box.
+\vfill\eject
+
+\textbf{Audio, Image, Video}
+We describe audio, image, and video modalities together, as they share the same interaction patterns.
+On desktop devices, audios, images, or videos can be uploaded from the user's hard disk via a~file upload dialog or via drag 'n' drop.
+On some mobile devices (e.g., iOS devices) file uploading is prohibited, which is why in the longterm, as support advances, we aim at using the getUserMedia API.
+The fallback solution is a~Flash uploader.
+
+\textbf{Rhythm}
+On desktop devices, we support entering a~rhythm by key presses or mouse tapping, whereas additionally on mobile devices a~rhythm can also be captured via the device orientation API by tilting the device rhythmically.
+
+\textbf{3D Object}
+We support 3D objects on mobile and desktop via the COLLADA 3D asset exchange schema.
+3D objects can be inserted via a~file upload dialog or drag 'n' drop. 
+
+\textbf{Sketch}
+Hand-drawn sketches can be created on mobile and desktop devices alike using a~simple touch-based HTML5 canvas sketch editor.
+
+\textbf{Emotion}
+In order to accompany a~query by basic emotional feedback, we have adapted an open-source emotion input solution for mobile and desktop that transfers the slider user interface pattern to emotions from sad to happy. 
+
+\textbf{Geolocation}
+For retrieving and tracking a~user's physical location, we use the HTML5 geolocation API, which is available in Web browsers on mobile and desktop devices.
+
+\balancecolumns
+
+\end{document}

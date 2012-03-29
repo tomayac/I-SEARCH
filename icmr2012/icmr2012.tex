@@ -1,4 +1,8 @@
-\documentclass{acm_proc_article-sp}
+\documentclass{sig-alternate}
+
+\conferenceinfo{ICMR}{'12, June 5--8, Hong Kong, China}
+\CopyrightYear{\copyright 2012}
+\crdata{978-1-4503-1329-2/12/06}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -78,46 +82,42 @@ framexbottommargin=-1em,
 
 \title{One Size Does Not Fit All -- Multimodal Search on Mobile and Desktop Devices with the \mbox{I-SEARCH} Search Engine}
 
-\numberofauthors{6}
+\numberofauthors{17}
 \author{
 \alignauthor
-\textbf{Thomas Steiner}\\
+Thomas Steiner\\
 	\affaddr{Google Germany GmbH}\\
-	\affaddr{tomac@google.com}
+	\email{tomac@google.com}
 \alignauthor
-\textbf{Lorenzo Sutton}\\
+Lorenzo Sutton\\
 	\affaddr{Accademia Naz. di S. Cecilia}\\
-	\affaddr{l.sutton@santacecilia.it}
+	\email{l.sutton@santacecilia.it}
 \alignauthor
-\textbf{Sabine Spiller}\\ 	
+Sabine Spiller\\ 	
 	\affaddr{EasternGraphics GmbH}\\
-	\affaddr{sabine.spiller@easterngraphics.com}
+	\email{spiller@easterngraphics.com}
 \and	
 \alignauthor	
-\textbf{Marilena Lazzaro,\\*Francesco Nucci,\\*Vincenzo Croce}\\
+Marilena Lazzaro, Francesco Nucci, and Vincenzo Croce\\
 	\affaddr{Engineering}\\
-	\affaddr{\{firstname.lastname\}@eng.it}
+	\email{\{first.last\}@eng.it}
 \alignauthor
-\textbf{Alberto Massari,\\*Antonio Camurri}\\
+Alberto Massari, and Antonio Camurri\\
 	\affaddr{University of Genova}\\
-	\affaddr{alby@infomus.dist.unige.it, antonio.camurri@unige.it}  
+	\email{alby@infomus.dist.unige.it, antonio.camurri@unige.it}  
 \alignauthor	
-\textbf{Anne Verroust-Blondet,\\*Laurent Joyeux}\\
+Anne Verroust-Blondet, and Laurent Joyeux\\
 	\affaddr{INRIA Rocquencourt}\\
-	\affaddr{\{anne.verroust, laurent.joyeux\}@inria.fr}
-\and
-\alignauthor
-\textbf{Jonas Etzold,\\*Paul Grimm}\\
-	\affaddr{Hochschule Fulda}\\
-	\affaddr{\{jonas.etzold, paul.grimm\}@hs-fulda.de}
-\alignauthor
-\textbf{Athanasios Mademlis, Sotiris Malassiotis, Petros Daras}\\
-	\affaddr{CERTH/ITI}\\  
-  	\affaddr{\{mademlis, malasiot, daras\}@iti.gr}
-\alignauthor
-\textbf{Apostolos Axenopoulos,\\*Dimitrios Tzovaras}\\
-	\affaddr{CERTH/ITI}\\  
-	\affaddr{\{axenop, tzovaras\}@iti.gr}
+	\email{\{anne.verroust, laurent.joyeux\}@inria.fr}
+}
+
+\additionalauthors{Additional authors:
+Jonas Etzold, Paul Grimm
+(Hochschule Fulda,
+email: \texttt{\{jonas.etzold, paul.grimm\}@hs-fulda.de}),
+Athanasios Mademlis, Sotiris Malassiotis, Petros Daras, Apostolos Axenopoulos, Dimitrios Tzovaras
+(CERTH/ITI,
+email: \texttt{\{mademlis, malasiot, daras, axenop, tzovaras\}@iti.gr})
 }
 
 \maketitle
@@ -149,6 +149,7 @@ We maintain a demonstration server\footnote{Demonstration: \url{http://isearch.a
 \mbox{I-SEARCH} is a complex project that touches on many research areas treated by the different project partners.
 One important goal is to hide this complexity from the end user through a consistent and context-aware user interface based on standard HTML5, JavaScript, and CSS, with ideally no additional plug-ins like Flash required.
 We aim at sharing one common code base for both device classes, mobile and desktop, with the user interface getting progressively enhanced~\cite{progressiveenhancement} the more capable the user's Web browser and connection speed are.
+The user interface presentation can be tailored to a specific range of output devices without changing the content itself by using CSS3 Media Queries~\cite{mediaqueries}.
 Search engines over the years have coined a common interaction pattern: the search box.
 We enhance this interaction pattern by context-aware modality input toggles that create modality query tokens in the \mbox{I-SEARCH} search box.
 \autoref{fig:ui} shows three example modality query tokens for \emph{audio}, \emph{emotion}, and \emph{geolocation}.
@@ -157,61 +158,63 @@ We enhance this interaction pattern by context-aware modality input toggles that
 \includegraphics[width=\columnwidth]{./resources/ui.png}
 \caption{\mbox{I-SEARCH} search box with three modality query tokens for \emph{audio}, \emph{emotion}, and \emph{geolocation}. Below, the \emph{rhythm} modality toggle is active.}
 \label{fig:ui}
-\vspace{-1em}
+%\vspace{-1em}
 \end{figure}
 
 \section{Use Cases} \label{sec:usecases}
 In order to give the reader an idea of intended \mbox{I-SEARCH} usage and to motivate multimodality, we introduce three use cases and involved modalities as defined by the project.
-\vspace{-1.5em}
+%\vspace{-1.5em}
 
 \paragraph{UC1: Music Expert (Desktop, Mobile)}
 A music expert with access to a big music archive does research on the influence of traditional folk music on today's popular music.
 She inputs a \emph{rhythm} to the \mbox{I-SEARCH} system in order to search the archive for similar rhythm patterns.
-She refines her query by adding \emph{geolocation} to limit results to a certain region and by uploading an \emph{image} from a disco club.
-\vspace{-1.5em}
+She refines her query by adding \emph{geolocation} to limit results to a certain region and by uploading a disco \emph{image}.
+%\vspace{-1.5em}
 
 \paragraph{UC2: Interior Designer (Desktop)}
-An interior designer wants to give her client a realistic impression of available office chairs.
-She uploads a \emph{3D model} of a chair that almost matches her client's expectations to the \mbox{I-SEARCH} system, together with an \emph{image} of the desired upholstery.
-She uses a hand-drawn \emph{sketch} of the chair's shape as a refinement.
-\vspace{-1.5em}
+An interior designer wants to give her client a realistic idea of office chairs.
+She uploads a \emph{3D model} of a chair that almost matches her client's expectations to the \mbox{I-SEARCH} system, together with an \emph{image} of the upholstery.
+She refines with a hand-drawn \emph{sketch} of the chair's shape.
+%\vspace{-1.5em}
 
 \paragraph{UC3: World Traveler (Mobile)}
-A world traveler uses her cell phone with the \mbox{I-SEARCH} application to create media content with associated \emph{geolocation} data like \emph{videos} and \emph{images} of the sights she walks by to retrieve related media content of other travelers, \emph{text} descriptions, and \emph{3D models} she wants to use to map her trip on a virtual globe.
+A traveler uses her cell phone with the \mbox{I-SEARCH} app to create media content with associated \emph{geolocation} data like \emph{videos} and \emph{images} of the sights she visits to retrieve related content of other travelers, \emph{text} descriptions, and \emph{3D models} that she wants to use to map her trip on a virtual globe.
 
 \section{Modalities Across Devices}
-In this Section, we focus on \emph{input} modalities across \emph{mobile} and \emph{desktop} device classes and their support in \mbox{I-SEARCH}.
+In this Section, we focus on \emph{input} modalities across \emph{mobile} and \emph{desktop} device classes and their support in \mbox{I-SEARCH}.\\
 
-\paragraph{Audio, Image, Video}
+\noindent \textbf{Audio, Image, Video}
 We describe audio, image, and video modalities together, as they share the same interaction patterns.
 On desktop devices, audios, images, or videos can be uploaded from the user's hard disk via a file upload dialog or via drag 'n' drop.
 On some mobile devices (e.g., iOS devices) file uploading is prohibited, which is why in the longterm, as support advances, we aim at using the getUserMedia API~\cite{getusermedia}.
-The fallback solution is a Flash uploader.
-\vspace{-1.5em}
+At time of writing, access to getUserMedia is available in developer
+preview builds of several browsers.
+The fallback solution is a Flash uploader.\\
+%\vspace{-1.5em}
 
-\paragraph{Rhythm}
-On desktop devices, we support entering a rhythm by key presses or mouse tapping, whereas additionally on mobile devices a rhythm can also be captured via the device orientation API~\cite{deviceorientation} by tilting the device rhythmically.
-\vspace{-1.5em}
+\noindent \textbf{Rhythm}
+On desktop devices, we support entering a rhythm by key presses or mouse tapping, whereas additionally on mobile devices a rhythm can also be captured via the device orientation API~\cite{deviceorientation} by tilting the device rhythmically.\\
+%\vspace{-1.5em}
 
-\paragraph{3D Object}
+\noindent \textbf{3D Object}
 We support 3D objects on mobile and desktop via the COLLADA 3D asset exchange schema~\cite{collada}.
-3D objects can be inserted via a file upload dialog or drag 'n' drop. 
-\vspace{-1.5em}
+3D objects can be inserted via a file upload dialog or drag 'n' drop.\\ 
+%\vspace{-1.5em}
 
-\paragraph{Sketch}
+\noindent \textbf{Text}
+On mobile and desktop, text can be entered using the keyboard or using the speech input API~\cite{speechinput}.\\
+
+\noindent \textbf{Emotion}
+In order to accompany a query by basic emotional feedback, we have adapted an open-source emotion input solution~\cite{emotionslider} for mobile and desktop that transfers the slider user interface pattern to emotions from sad to happy.\\ 
+%\vspace{-1.5em}
+
+\noindent \textbf{Geolocation}
+For retrieving and tracking a user's physical location, we use the HTML5 geolocation API~\cite{geolocation}, which is available in Web browsers on mobile and desktop devices.\\
+%\vspace{-1.5em}
+
+\noindent \textbf{Sketch}
 Hand-drawn sketches can be created on mobile and desktop devices alike using a simple touch-based HTML5 canvas~\cite{canvas} sketch editor.
-\vspace{-1.5em}
-
-\paragraph{Emotion}
-In order to accompany a query by basic emotional feedback, we have adapted an open-source emotion input solution~\cite{emotionslider} for mobile and desktop that transfers the slider user interface pattern to emotions from sad to happy. 
-\vspace{-1.5em}
-
-\paragraph{Geolocation}
-For retrieving and tracking a user's physical location, we use the HTML5 geolocation API~\cite{geolocation}, which is available in Web browsers on mobile and desktop devices.
-\vspace{-1.5em}
-
-\paragraph{Text}
-On mobile and desktop, text can be entered using the keyboard or using the speech input API~\cite{speechinput}.
+%\vspace{-1.5em}
 
 \section{Future Work and Conclusion}
 We have introduced the \mbox{I-SEARCH} project and three of its use cases and have shown how different input modalities are supported on mobile and desktop. Now we need to integrate the project partners' services in the back-end, in order to support multimodal output besides multimodal input.
