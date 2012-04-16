@@ -132,6 +132,8 @@ We highlight ways to achieve the same functionality agnostic of the device class
 \category{H.3.4}{Information Systems}{Information Storage and Retrieval}[World Wide Web]
 %\category{H.3.5}{Online Information Services}{Web-based services}
 
+\terms{Experimentation}
+
 \keywords{Multimodality, Rich Unified Content Description, IR}
 
 \section{Introduction} \label{sec:introduction}
@@ -156,9 +158,9 @@ We enhance this interaction pattern by context-aware modality input toggles that
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{./resources/ui.png}
-\caption{\mbox{I-SEARCH} search box with three modality query tokens for \emph{audio}, \emph{emotion}, and \emph{geolocation}. Below, the \emph{rhythm} modality toggle is active.}
+\caption{\mbox{I-SEARCH} search box with three modality query tokens for \emph{audio}, \emph{emotion}, and \emph{geolocation}.}
 \label{fig:ui}
-%\vspace{-1em}
+\vspace{-0.9em}
 \end{figure}
 
 \section{Use Cases} \label{sec:usecases}
@@ -206,6 +208,7 @@ On mobile and desktop, text can be entered using the keyboard or using the speec
 
 \noindent \textbf{Emotion}
 In order to accompany a query by basic emotional feedback, we have adapted an open-source emotion input solution~\cite{emotionslider} for mobile and desktop that transfers the slider user interface pattern to emotions from sad to happy.\\ 
+%\footnote{\url{http://glittle.org/smiley-slider/}}
 %\vspace{-1.5em}
 
 \noindent \textbf{Geolocation}
@@ -225,6 +228,17 @@ This work was partially supported by the European Commission under Grant No. 248
 % back to normal size Computer Modern for URLs in bibliography
 \let\ttdefault\oldttdefault
 \let\url\oldurl
+
+% decrease space between bibliographic references
+\let\oldbibitem\bibitem
+\renewcommand{\bibitem}[1]{%
+	\ifx\bibstarted\undefined
+		\def\bibstarted{1}
+		\vspace{.1em}
+	\else
+		\vspace{-.2em plus .1em minus .1em}
+	\fi
+\oldbibitem{#1}}
 
 \bibliographystyle{abbrv}
 \bibliography{icmr2012}
