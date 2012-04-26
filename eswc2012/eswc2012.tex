@@ -11,6 +11,8 @@
 % graphics
 \usepackage{graphicx}
 
+\usepackage[lofdepth,lotdepth]{subfig}
+
 % URLs
 \usepackage{url}
 
@@ -21,7 +23,7 @@
 \title{Enriching Content Objects for Multimodal Search with Data from the Linking Open Data Cloud}
 \authorrunning{Enriching Content Objects for Multimodal Search with Data from the Linking Open Data Cloud}
 
-\author{Jonas Etzold\inst{1} \and Thomas Steiner\inst{2} \and Arnaud Brousseau\inst{2}\thanks{The author was an intern at Google Germany GmbH at time of core development of the application.} \and Paul Grimm\inst{1}}
+\author{Jonas Etzold\inst{1} \and Thomas Steiner\inst{2} \and Arnaud Brousseau\inst{2}\thanks{The author was an intern at Google Germany GmbH at time of core development.} \and Paul Grimm\inst{1}}
 
 \institute{\label{fulda}Hochschule Fulda, Marquardstr. 35
 36039 Fulda, Germany\\
@@ -52,6 +54,31 @@ We are especially looking for networking opportunities with projects dealing wit
 semantic annotation of large-scale multimedia content pools and 
 projects interested in our \emph{RUCoD} feature extraction techniques.
 \end{abstract}
+
+\section{Introduction}
+
+\section{Rich Unified Content Description (RUCoD)}
+It is evident that for the outlined scenarios to work, a significant investment in describing the underlying media items is necessary.
+Therefore, in~\cite{ijmis2010}, we have first introduced the concept of so-called \emph{content objects}, and second, a description format named \emph{Rich Unified Content Description \mbox{(RUCoD)}}.
+Content objects are rich media presentations, enclosing different types of media, along with real-world information and user-related information.
+\mbox{\emph{RUCoD}} provides a uniform descriptor for all types of content objects, irrespective of the underlying media and accompanying information.
+Due to the enormous processing costs for the description of content objects,
+our approach currently is not yet applicable on Web scale.
+We target ``Company Wide Intraweb'' scale rather than World Wide Web scale environments,
+which, however, we make accessible in a multimodal way from the World Wide Web.
+
+\begin{figure}[]
+  \centering
+    \subfloat[][Architecture of the CoFetch tool.]{
+      \includegraphics[width=0.5\textwidth]{architecture.png}
+      \label{fig:architecture}}
+    \qquad
+    \subfloat[][Screenshot of the CoFetch tool.]{
+      \includegraphics[width=0.4\textwidth]{screenshot.png}
+      \label{fig:screenshot}}
+\caption{CoFetch.}
+\label{fig:cofetch}
+\end{figure}
 
 \bibliographystyle{splncs03}
 \bibliography{eswc2012}
