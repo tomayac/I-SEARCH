@@ -1,0 +1,45 @@
+\documentclass[runningheads,a4paper]{llncs}
+% proper encoding
+\usepackage[T1]{fontenc}
+
+% autoref command
+\usepackage[pdftex,urlcolor=black,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+
+% better typography
+\usepackage[activate=compatibility]{microtype}
+
+% graphics
+\usepackage{graphicx}
+
+% URLs
+\usepackage{url}
+
+\begin{document}
+
+\mainmatter
+
+\title{Enriching Content Objects for Multimodal Search with Data from the Linking Open Data Cloud}
+\authorrunning{Enriching Content Objects for Multimodal Search with Data from the Linking Open Data Cloud}
+
+\author{Jonas Etzold\inst{1} \and Thomas Steiner\inst{2} \and Arnaud Brousseau\inst{2}\thanks{The author was an intern at Google Germany GmbH at time of core development of the application.} \and Paul Grimm\inst{1}}
+
+\institute{\label{fulda}Hochschule Fulda, Fulda, Germany\\
+\urldef{\emails}\path|{jonas.etzold,paul.grimm}@hs-fulda.de|\emails\\
+\and Google Germany GmbH, ABC-Str. 19, 20355 Hamburg, Germany\\
+\urldef{\emails}\path|{tomac,arnaudb}@google.com|\emails\\
+}
+
+\maketitle
+
+\begin{abstract}
+In this paper, we report on work around the \mbox{I-SEARCH} EU (FP7 ICT STREP) project whose objective is the development of a multimodal search engine that supports multimodal in- and output, and query refinement.
+Supported modalities are \emph{audio}, \emph{video}, \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion}, \emph{social signals}, \emph{geolocation}, and \emph{text}.
+Each modality can be combined with all other modalities.
+An important part for \mbox{I-SEARCH} to work is a \emph{Rich Unified Content Description \mbox{(RUCoD)}} format consisting of a multi-layered structure that describes low and high level features of content objects and hence allows these content objects to be queried in a consistent way by using extracted \mbox{\emph{RUCoD}} features.
+%The abstract should introduce the EU funded RD project, briefly describe its RD activities and goals, outline what the project would show / demonstrate in the session and specify what the project expects to gain from networking with other projects (what it offers, what it is looking for).
+\end{abstract}
+
+\bibliographystyle{splncs03}
+\bibliography{eswc2012}
+
+\end{document}
