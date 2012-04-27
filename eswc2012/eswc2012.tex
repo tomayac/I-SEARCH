@@ -38,23 +38,20 @@
 
 \begin{abstract}
 In this paper, we report on the \mbox{I-SEARCH} EU (FP7 ICT STREP) project
-whose objective is the development of a~multimodal search engine that supports multimodal
+whose objective is the development of a~multimodal search engine supporting multimodal
 in- and output, as well as multimodal query refinement.
-An important aspect for \mbox{I-SEARCH} to work is the so-called
+An important aspect of \mbox{I-SEARCH} is the so-called
 \emph{Rich Unified Content Description} \emph{\mbox{(RUCoD)}} format
-consisting of a~multi-layered structure
 for the description of low and high level features of content objects.
-The \emph{\mbox{(RUCoD)}} description format allows content objects
-to be queried in a~consistent way by using extracted \mbox{\emph{RUCoD}} features.
-For the fully automatic or the supervised creation of content objects,
-we have developed a tool called \mbox{\emph{CoFetch}}
-that retrieves part of its data from the Linking Open Data cloud.
+We have developed a~tool called \mbox{\emph{CoFetch}}
+for the creation of content objects,
+which partly retrieves its data from the Linking Open Data cloud.
 During the session, we will present a~live demonstration of the \mbox{I-SEARCH}
-Graphical User Interface (GUI) and the \mbox{\emph{CoFetch}} tool, and,
-via pre-defined use cases, show how we imagine multimodal search in the future.
+search engine and \mbox{\emph{CoFetch}}, and---via pre-defined use cases---show
+how we imagine multimodal search in the future.
 We are looking for networking opportunities with projects dealing with
-semantic annotation of large-scale multimedia archives and 
-projects interested in our \emph{RUCoD} feature extraction techniques.
+semantic annotation of multimedia archives and 
+projects interested in \emph{RUCoD} feature extraction techniques.
 \end{abstract}
 
 \section{Introduction}
@@ -65,27 +62,20 @@ that create modality query tokens in the \mbox{I-SEARCH} search
 box\footnote{See \url{http://isearch.ai.fh-erfurt.de/} for a~live demonstration.}.
 The concept-centered \mbox{I-SEARCH} search engine lets users search
 by using different modalities and combinations of modalities.
-Supported modalities and combinations thereof are \emph{audio}, \emph{video},
+Supported modalities are \emph{audio}, \emph{video},
 \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion},
 \emph{social signals}, \emph{geolocation}, and \emph{text}.
 For example, in order to get a~holistic view on the concept of
-Leonardo da Vinci's painting of the \emph{Mona Lisa} (also known as \emph{La Joconde}),
-a~user could search by uploading a~photograph of the painting,
-and---besides the obvious textual description---also get back
-the geolocation of the Louvre museum,
-a~video of a~relevant section of a~Louvre museum walk,
-or the audio recording of an explanation of the painting.
+Leonardo da Vinci's painting of \emph{La Joconde},
+a~user could search via a~photograph of the painting,
+and---besides the textual description---also get back
+the exact geolocation of the painting in the Louvre museum,
+a~video of a~relevant section of a~Louvre tour,
+or an audio recording of an explanation of the painting by a~museum guide.
 
-\begin{figure}
-\includegraphics[width=.1\linewidth]{ui.png}
-\caption{\mbox{I-SEARCH} with 3 modality query tokens \emph{audio}, \emph{emotion}, and \emph{geolocation}.}
-\label{fig:ui}
-\end{figure}
-
-
-\section{Rich Unified Content Description (RUCoD)}
-In order to allow for the before-mentioned concept-centeredness,
-in the context of \mbox{I-SEARCH}, we have first introduced
+\section{Rich Unified Content Description (\emph{RUCoD})}
+In order to allow for the before-mentioned concept-centeredness of
+\mbox{I-SEARCH}, in the context of the project we have first introduced
 the concept of so-called \emph{content objects}, and second,
 a~description format named \emph{Rich Unified Content Description
 \mbox{(RUCoD)}}~\cite{ijmis2010}.
@@ -93,20 +83,40 @@ Content objects are rich media presentations, enclosing different types of media
 along with real-world information and user-related information.
 \mbox{\emph{RUCoD}} provides a~uniform descriptor for all types of content objects,
 irrespective of the underlying media and accompanying information.
-In the following Section, we will introduce a tool called \mbox{\emph{CoFetch}},
-which serves for the fully automatic or the supervised creation of content objects.
+In the following section, we will introduce a~tool for the creation of content objects.
+
+\section{\mbox{\emph{CoFetch}}---A~Tool for the Creation of Content Objects}
+\mbox{\emph{CoFetch}} is a~content object creation tool
+that can be operated in a~fully automatic, or in a~semi-supervised way.
+In order to generate content objects for a~given term- and category-based query,
+it harvests textual and image data from DBpedia
+via the DBpedia Lookup service~\cite{lookup},
+3D models from Google 3D Warehouse~\cite{3dwarehouse},
+images from Flickr~\cite{flickr}, videos from YouTube~\cite{youtube},
+audios from Freesound~\cite{freesound},
+and historical weather data from Weather Underground~\cite{wunderground}.
+In order to decide on the most relevant results from each service,
+a~Levenshtein distance function based on the titles and descriptions is used.
+First, we generate a~list of occurrences of the query terms
+within the results' textual data.
+Second, we generate a~list of distances between query and result titles.
+Third, the end result with the two most relevant items is determined.
+Finally, a~descriptor file with extracted \emph{\mbox{RUCoD}} features
+and pointers to all media items is generated.
 
 \begin{figure}[]
+\vspace{-1.5em}
   \centering
-    \subfloat[][Architecture of the CoFetch tool.]{
+    \subfloat[][Architecture of the \mbox{\emph{CoFetch}} tool.]{
       \includegraphics[width=0.5\textwidth]{architecture.png}
       \label{fig:architecture}}
     \qquad
-    \subfloat[][Screenshot of the CoFetch tool.]{
+    \subfloat[][Screenshot of the \mbox{\emph{CoFetch}} tool.]{
       \includegraphics[width=0.4\textwidth]{screenshot.png}
       \label{fig:screenshot}}
-\caption{CoFetch.}
+\caption{The \mbox{\emph{CoFetch}} tool uses among others data from the Linking Open Data cloud (\url{http://lod-cloud.net/}) for the generation of content objects.}
 \label{fig:cofetch}
+\vspace{-2.8em}
 \end{figure}
 
 \bibliographystyle{splncs03}
