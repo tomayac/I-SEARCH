@@ -25,8 +25,7 @@
 
 \author{Jonas Etzold\inst{1} \and Thomas Steiner\inst{2} \and Arnaud Brousseau\inst{2}\thanks{The author was an intern at Google Germany GmbH at time of core development.} \and Paul Grimm\inst{1}}
 
-\institute{\label{fulda}Hochschule Fulda, Marquardstr. 35
-36039 Fulda, Germany\\
+\institute{\label{fulda}Hochschule Fulda, Marquardstr. 35, 36039 Fulda, Germany\\
 \urldef{\emails}\path|{jonas.etzold,paul.grimm}@hs-fulda.de|\emails\\
 \and Google Germany GmbH, ABC-Str. 19, 20355 Hamburg, Germany\\
 \urldef{\emails}\path|{tomac,arnaudb}@google.com|\emails\\
@@ -38,13 +37,14 @@
 
 \begin{abstract}
 In this paper, we report on the \mbox{I-SEARCH} EU (FP7 ICT STREP) project
-whose objective is the development of a~multimodal search engine supporting multimodal
+whose objective is the development of a~multimodal search engine that supports multimodal
 in- and output, as well as multimodal query refinement.
 An important aspect of \mbox{I-SEARCH} is the so-called
 \emph{Rich Unified Content Description} \emph{\mbox{(RUCoD)}} format
-for the description of low and high level features of content objects.
+for the description of low and high level features of content objects---rich
+media presentations, enclosing different types of media.
 We have developed a~tool called \mbox{\emph{CoFetch}}
-for the creation of content objects,
+for the creation of such content objects,
 which partly retrieves its data from the Linking Open Data cloud.
 During the session, we will present a~live demonstration of the \mbox{I-SEARCH}
 search engine and \mbox{\emph{CoFetch}}, and---via pre-defined use cases---show
@@ -57,7 +57,7 @@ projects interested in \emph{RUCoD} feature extraction techniques.
 \section{Introduction}
 Search engines over the years have coined a~common interaction pattern:
 the search box.
-We enhance this interaction pattern by context-aware modality input toggles
+We enhance this interaction pattern with context-aware modality input toggles
 that create modality query tokens in the \mbox{I-SEARCH} search
 box\footnote{See \url{http://isearch.ai.fh-erfurt.de/} for a~live demonstration.}.
 The concept-centered \mbox{I-SEARCH} search engine lets users search
@@ -65,7 +65,7 @@ by using different modalities and combinations of modalities.
 Supported modalities are \emph{audio}, \emph{video},
 \emph{rhythm}, \emph{image}, \emph{3D object}, \emph{sketch}, \emph{emotion},
 \emph{social signals}, \emph{geolocation}, and \emph{text}.
-For example, in order to get a~holistic view on the concept of
+For example, in order to get a~holistic view of the concept of
 Leonardo da Vinci's painting of \emph{La Joconde},
 a~user could search via a~photograph of the painting,
 and---besides the textual description---also get back
@@ -76,14 +76,14 @@ or an audio recording of an explanation of the painting by a~museum guide.
 \section{Rich Unified Content Description (\emph{RUCoD})}
 In order to allow for the before-mentioned concept-centeredness of
 \mbox{I-SEARCH}, in the context of the project we have first introduced
-the concept of so-called \emph{content objects}, and second,
+the notion of so-called \emph{content objects}, and second,
 a~description format named \emph{Rich Unified Content Description
 \mbox{(RUCoD)}}~\cite{ijmis2010}.
 Content objects are rich media presentations, enclosing different types of media,
 along with real-world information and user-related information.
 \mbox{\emph{RUCoD}} provides a~uniform descriptor for all types of content objects,
 irrespective of the underlying media and accompanying information.
-In the following section, we will introduce a~tool for the creation of content objects.
+In the next section, we will introduce a~tool for the creation of such content objects.
 
 \section{\mbox{\emph{CoFetch}}---A~Tool for the Creation of Content Objects}
 \mbox{\emph{CoFetch}} is a~content object creation tool
@@ -105,14 +105,14 @@ Finally, a~descriptor file with extracted \emph{\mbox{RUCoD}} features
 and pointers to all media items is generated.
 
 \begin{figure}[]
-\vspace{-1.5em}
+\vspace{-1.0em}
   \centering
     \subfloat[][Architecture of the \mbox{\emph{CoFetch}} tool.]{
-      \includegraphics[width=0.5\textwidth]{architecture.png}
+      \includegraphics[width=0.54\textwidth]{architecture.png}
       \label{fig:architecture}}
     \qquad
-    \subfloat[][Screenshot of the \mbox{\emph{CoFetch}} tool.]{
-      \includegraphics[width=0.4\textwidth]{screenshot.png}
+    \subfloat[][The \mbox{\emph{CoFetch}} tool's GUI.]{
+      \includegraphics[width=0.35\textwidth]{screenshot.png}
       \label{fig:screenshot}}
 \caption{The \mbox{\emph{CoFetch}} tool uses among others data from the Linking Open Data cloud (\url{http://lod-cloud.net/}) for the generation of content objects.}
 \label{fig:cofetch}
